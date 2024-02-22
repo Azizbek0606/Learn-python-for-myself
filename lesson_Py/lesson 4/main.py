@@ -49,7 +49,7 @@
 
 # a = 1000
 # b = 100
-# counter = 0
+# counter = 0n76
 # while a >= b:
 #     a -= b
 #     counter += 1
@@ -65,4 +65,4 @@ while a > b:
 if a == 1 and a == 2:
     print(False)
 else:
-    print(True) 
+    print(True)    
