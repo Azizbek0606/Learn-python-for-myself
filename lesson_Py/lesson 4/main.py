@@ -58,7 +58,7 @@
 
 # task 6
 
-a = 25
+a = 87
 b = 3
 while a > b:
     a -= b
