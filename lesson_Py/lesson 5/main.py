@@ -83,24 +83,47 @@
 # print(car1.rasxod())
 
 
-class Calculate:
-    def __init__(self , x, y):
+# class Calculate:
+#     def __init__(self , x, y):
+#         self.x = x
+#         self.y = y
+
+#     def plus(self):
+#         return self.x + self.y
+
+#     def minus(self):
+#         return self.x - self.y
+
+#     def kopaytirish(self):
+#         return self.x * self.y
+
+#     def bolish(self):
+#         return self.x / self.y
+
+# num1 = int(input("1 - son: "))
+# num2 = int(input("2 - son: "))
+# calc1 = Calculate(num1 , num2)
+# print(calc1.plus())
+
+import math
+
+class GetArea:
+    def __init__(self , x , y , z):
         self.x = x
         self.y = y
+        self.z = z
 
-    def plus(self):
-        return self.x + self.y
+    def area(self):
+        return self.x + self.y + self.z
+    def yuza(self):
+        half_area = int(self.area()) / 2
+        return math.sqrt(
+            half_area
+            * (half_area - self.x)
+            * (half_area - self.y)
+            * (half_area - self.z)
+        )
 
-    def minus(self):
-        return self.x - self.y
-
-    def kopaytirish(self):
-        return self.x * self.y
-
-    def bolish(self):
-        return self.x / self.y
-
-num1 = int(input("1 - son: "))
-num2 = int(input("2 - son: "))
-calc1 = Calculate(num1 , num2)
-print(calc1.plus())
+triangle = GetArea(12,12,6)
+print(triangle.yuza())
+print(triangle.area())
