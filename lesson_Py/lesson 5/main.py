@@ -38,17 +38,69 @@
 
 # task 1
 
-def sing(x:int):
-    if int(x) > 0:
-        return 1
-    elif int(x) < 0:
-        return -1
-    elif int(x) == 0:
-        return 0
-    else:
-        return "xato qiymat"
+# def sing(x:int):
+#     if int(x) > 0:
+#         return 1
+#     elif int(x) < 0:
+#         return -1
+#     elif int(x) == 0:
+#         return 0
+#     else:
+#         return "xato qiymat"
 
-x = input("son:\n")
-print(sing(x))
+# x = input("son:\n")
+# print(sing(x))
 
 # print(True if x > 0 else False)
+
+
+# class Car:
+
+#     def __init__(self, model, color, position):
+#         self.model = model
+#         self.color = color
+#         self.position = position
+
+#     def __str__(self):
+#         return f"\nmashina modeli: {self.model}\nrangi: {self.color}\npozitsiyasi: {self.position}\n"
+
+#     def rasxod(self):
+#         if self.model == "Malibu":
+#             return 10
+#         elif self.model == "Onix":
+#             return 8
+#         elif self.model == "Nexia-3":
+#             return 9
+#         else:
+#             return "bunday turdagi mashina mavjud emas"
+
+# car1 = Car("Onix" , "qora" , 3)
+# car2 = Car("Malibu", "oq", 2)
+# car3 = Car("Nexia-3" , "qora" , 4)
+# print(car1)
+# print(car2)
+# print(car3)
+# print(car1.rasxod())
+
+
+class Calculate:
+    def __init__(self , x, y):
+        self.x = x
+        self.y = y
+
+    def plus(self):
+        return self.x + self.y
+
+    def minus(self):
+        return self.x - self.y
+
+    def kopaytirish(self):
+        return self.x * self.y
+
+    def bolish(self):
+        return self.x / self.y
+
+num1 = int(input("1 - son: "))
+num2 = int(input("2 - son: "))
+calc1 = Calculate(num1 , num2)
+print(calc1.plus())
