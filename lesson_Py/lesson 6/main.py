@@ -28,11 +28,11 @@
 # print(count_multiple(first_num , second_num))
 
 def calc(a,b,op):
-    if op == 1:
+    if int(op) == 1:
         print(f"ayrma : {a - b}")
-    elif op == 2:
+    elif int(op) == 2:
         print(f"ko'paytma : {a * b}")
-    elif op == 3:
+    elif int(op) == 3:
         print(f"bo'linma : {a / b}")
     else:
         print(f"yig'indi : {a + b}")
