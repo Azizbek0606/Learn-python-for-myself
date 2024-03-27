@@ -1,1 +1,2 @@
-print("hello world6")
+s, s0 = "HelloWorld", "World"
+print(s0 in s)
