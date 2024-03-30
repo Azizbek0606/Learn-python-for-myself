@@ -81,6 +81,7 @@ header {
   position: fixed;
   background-color: #1321237a;
   backdrop-filter: blur(10px);
+  z-index: 999 !important;
 }
 .active_category_list,
 .active_tags_list {
@@ -153,6 +154,7 @@ header {
   background-color: #0c3b44a1;
   backdrop-filter: blur(10px);
   transition: 0.3s;
+  z-index: 999 !important;
 }
 .search_block form {
   width: 300px;
