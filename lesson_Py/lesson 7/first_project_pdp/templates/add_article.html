@@ -2,7 +2,7 @@
 {% block context_index %}
 <div class="container">
     <div class="wrapper_article_form">
-    <form action="{% url 'main_app:add_article' %}" method="post" enctype="multipart/form-data">
+        <form action="{% url 'main_app:add_article' %}" method="post" enctype="multipart/form-data">
             <input type="text" name="title" placeholder="Title">
             <textarea name="context" id="" cols="30" rows="10" placeholder="Context"></textarea>
             <input type="file" placeholder="Image" name="image" id="upload_img">
@@ -11,6 +11,12 @@
                 <option selected disabled>Category</option>
                 {% for i in categoryes %}
                 <option value="{{i.id}}">{{i.name}}</option>
+                {% endfor %}
+            </select>
+            <select name="tag" id="">
+                <option selected disabled>Select tag</option>
+                {% for i in tags %}
+                <option value="{{ i.id }}">{{i.name}}</option>
                 {% endfor %}
             </select>
             <input type="submit" value="Submit">

@@ -33,8 +33,10 @@ def show_article(request):
 
 def show_article_form(request):
     categoryes = Categories.objects.all()
+    tags = Tags.objects.all()
     data = {
         "categoryes": categoryes,
+        "tags":tags
     }
     return render(request, "add_article.html", context=data)
 
@@ -45,10 +47,12 @@ def add_article(request):
         content = request.POST.get("context")
         author = request.user
         category_id = request.POST.get("category")
+        tag_id = request.POST.get("tag")
         image = request.FILES.get("image")
         category = Categories.objects.get(id=category_id)
+        tag = Tags.objects.get(id=tag_id)
         new_article = Article(
-            title=title, content=content, author=author, category=category, image=image
+            title=title, content=content, author=author, category=category, image=image , tag=tag
         )
         new_article.save()
         messages.success(request, "Maqola muvaffaqiyatli qo'shildi!")

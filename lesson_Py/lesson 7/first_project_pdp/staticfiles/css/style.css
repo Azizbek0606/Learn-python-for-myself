@@ -34,6 +34,7 @@ header {
   color: white;
   display: flex;
   justify-content: center;
+  z-index: 99 !important;
 }
 
 .header_block {
@@ -130,10 +131,11 @@ header {
   border-radius: 5px;
 }
 .main_tag_block {
-  min-width: 120px;
+  width: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 5px;
   padding: 5px;
   border: 1px solid #2c6672a1;
   border-radius: 10px;
@@ -193,7 +195,7 @@ header {
 }
 .wrapper_article_form {
   width: 1200px;
-  height: 500px;
+  height: 530px;
   margin: 0px auto;
   display: flex;
   justify-content: center;
@@ -201,7 +203,7 @@ header {
 }
 .wrapper_article_form form {
   width: 50%;
-  height: 350px;
+  height: 400px;
   padding: 20px 20px;
   display: flex;
   justify-content: space-between;
@@ -248,4 +250,79 @@ header {
   background-color: #06333ba1;
   border: none;
   outline: none;
+}
+.blog_card_wrapper {
+  padding: 30px 0px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1em;
+}
+.image_block {
+  width: 100%;
+  height: 150px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+.author {
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  position: absolute;
+  margin-top: 7px;
+  transform: translateX(-250px);
+  transition: 0.3s;
+  backdrop-filter: blur(5px);
+}
+.image_block p {
+  width: 100%;
+  padding: 5px 25px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+}
+.card {
+  height: 370px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.context_block {
+  height: 210px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.context_block button {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  outline: none;
+  outline: none;
+  background-color: transparent;
+  padding: 10px;
+  border-radius: 5px;
+}
+.like_comment_wrapper_block {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.like_comment_wrapper_block div {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+}
+
+.like_comment_wrapper_block div p {
+  font-size: 12px;
 }
