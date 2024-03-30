@@ -2,7 +2,7 @@
 {% block context_index %}
 <div class="container">
     <div class="wrapper_article_form">
-        <form action="" method="post">
+    <form action="{% url 'main_app:add_article' %}" method="post" enctype="multipart/form-data">
             <input type="text" name="title" placeholder="Title">
             <textarea name="context" id="" cols="30" rows="10" placeholder="Context"></textarea>
             <input type="file" placeholder="Image" name="image" id="upload_img">
@@ -14,6 +14,7 @@
                 {% endfor %}
             </select>
             <input type="submit" value="Submit">
+            {% csrf_token %}
         </form>
     </div>
 </div>

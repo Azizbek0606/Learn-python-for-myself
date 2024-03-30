@@ -5,6 +5,11 @@ class Categories(models.Model):
     name = models.CharField(max_length=100)
     def __str__(self):
         return str(self.name)
+    
+class Tags(models.Model):
+    name = models.CharField(max_length=100)
+    def __str__(self):
+        return str(self.name)
 class Article(models.Model):
     title = models.CharField(max_length=100)
     content = models.TextField()
@@ -16,6 +21,7 @@ class Article(models.Model):
     comments = models.IntegerField(default=0)
     views = models.IntegerField(default=0)
     category = models.ForeignKey(Categories, on_delete=models.CASCADE)
+    tag = models.ForeignKey(Tags, on_delete=models.CASCADE)
     def __str__(self):
         return str(self.title)
 
