@@ -11,7 +11,7 @@ def home(request):
     return render(request, "index.html")
 
 
-class categoryListApi(APIView):
+class CategoryListApi(APIView):
     def get(self, request):
         category = Categories.objects.all()
         serializer = CategorySerializer(category, many=True)

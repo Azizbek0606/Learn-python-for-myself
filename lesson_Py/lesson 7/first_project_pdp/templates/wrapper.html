@@ -16,21 +16,42 @@
     <div class="container">
         <div class="header_block">
             <div class="logo">
-                <img src="{% static 'media/header/logo.png.url' %}" alt="">
+                <a href="/">
+                    <h2 class="logo_nav_block"><i class="fa-solid fa-earth-americas"></i> BLOG</h2>
+                </a>
             </div>
             <div class="nav_menu">
                 <ul>
                     <li><a href="/"><i class="fa-solid fa-house"></i> Home</a></li>
                     {% if request.user.is_superuser %}
-                    <li><a href="/">Add article</a></li>
+                    <li><a href="/"><i class="fa-solid fa-circle-plus"></i> Add article</a></li>
                     {% endif %}
-                    <li id="">Categories</li>
-                    <li>Search</li>
+                    <li class="category_btn"><i class="fa-solid fa-list"></i> Categories</li>
+                    <li class="logo_nav_block search_btn_nav"><i class="fa-solid fa-magnifying-glass"></i> Search</li>
                 </ul>
             </div>
         </div>
     </div>
 </header>
+<div class="only_header" style="height: 100px;"></div>
+<div class="category_list">
+    <div class="list_wrapper">
+        <div class="categories_text_wrapper">
+        </div>
+        <div class="category_nav_btn_wrapper">
+            <p class="category_btn"><i class="fa-solid fa-chevron-up"></i></p>
+        </div>
+    </div>
+</div>
+<div class="search_block">
+    <div class="search_input_wrapper">
+        <form action="" method="get">
+            <input type="text" name="search" placeholder="Search">
+            <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+        <div class="logo_nav_block search_btn_nav"><i class="fa-solid fa-chevron-up"></i></div>
+    </div>
+</div>
 {% block context_index %}
 {% endblock context_index %}
 <script src="{% static 'js/app.js' %}"></script>
