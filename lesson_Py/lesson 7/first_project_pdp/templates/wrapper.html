@@ -24,7 +24,7 @@
                 <ul>
                     <li><a href="/"><i class="fa-solid fa-house"></i> Home</a></li>
                     {% if request.user.is_superuser %}
-                    <li><a href="/"><i class="fa-solid fa-circle-plus"></i> Add article</a></li>
+                    <li><a href="{% url 'main_app:show_article_form' %}"><i class="fa-solid fa-circle-plus"></i> Add article</a></li>
                     {% endif %}
                     <li class="category_btn"><i class="fa-solid fa-list"></i> Categories</li>
                     <li class="logo_nav_block search_btn_nav"><i class="fa-solid fa-magnifying-glass"></i> Search</li>

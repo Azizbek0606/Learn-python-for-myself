@@ -7,8 +7,6 @@ from .serializers import CategorySerializer
 
 
 # Create your views here.
-def home(request):
-    return render(request, "index.html")
 
 
 class CategoryListApi(APIView):
@@ -24,3 +22,26 @@ def show_article(request):
         "article": all_articles,
     }
     return render(request, "index.html", context=data)
+
+
+def show_article_form(request):
+    categoryes = Categories.objects.all()
+    data = {
+        "categoryes": categoryes,
+    }
+    return render(request, "add_article.html" , context=data)
+
+
+def add_article(request):
+    if request.method == "POST":
+        title = request.POST.get("title")
+        content = request.POST.get("content")
+        author = request.user
+        category = request.POST.get("category")
+        new_article = Article(
+            title=title, content=content, author=author, category=category
+        )
+        new_article.save()
+        return redirect("/")
+    else:
+        return render(request, "add_article.html")
