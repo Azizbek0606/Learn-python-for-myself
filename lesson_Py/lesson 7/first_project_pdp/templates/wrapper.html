@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <title>first lesson</title>
+</head>
+
+<body>
+</body>
+<header>
+    <div class="container">
+        <div class="header_block">
+            <div class="logo">
+                <a href="/"><img src="{% static 'img/logo.png' %}" alt="logo"></a>
+            </div>
+            <div class="nav_menu">
+                <ul>
+                    <li><a href="/"><i class="fa-solid fa-house"></i> Home</a></li>
+                    {% if request.user.is_superuser %}
+                    <li><a href="/">Add article</a></li>
+                    {% endif %}
+                    <li id="">Categories</li>
+                    <li>Search</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+{% block context_index %}
+{% endblock context_index %}
+<script src="{% static 'js/app.js' %}"></script>
+<script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
+
+</html>
