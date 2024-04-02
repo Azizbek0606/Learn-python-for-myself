@@ -28,8 +28,9 @@
                         <p>{{ i.title }}</p>
                     </div>
                     <div class="article_icon_wrapper">
-                        <p class="delete_modal_btn" article_id="{% url 'main_app:delete_this_article' i.id %}"><i class="fa-solid fa-trash"></i></p>
-                        <i class="fa-solid fa-pen-to-square"></i>
+                        <p class="delete_modal_btn" article_id="{% url 'main_app:delete_this_article' i.id %}"><i
+                                class="fa-solid fa-trash"></i></p>
+                        <a href="{% url 'main_app:update_article' i.id %}"> <i class="fa-solid fa-pen-to-square"></i></a>
                     </div>
                 </div>
                 <div class="article_content">

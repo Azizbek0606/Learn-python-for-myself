@@ -15,4 +15,5 @@ urlpatterns = [
         views.delete_this_article,
         name="delete_this_article",
     ),
+    path("update/<id>", views.article_update_view, name="update_article"),
 ]

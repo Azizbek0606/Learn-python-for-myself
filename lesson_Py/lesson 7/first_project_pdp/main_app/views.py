@@ -4,7 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from .serializers import CategorySerializer, TagSerializer
 from django.contrib import messages
-from forms import *
+from .forms import *
 
 # Create your views here.
 
@@ -88,4 +88,4 @@ def article_update_view(request, id):
             return redirect("/user/panel/", id=article.id)
     else:
         form = ArticleForm(instance=article)
-    return render(request, "articles/article_form.html", {"form": form})
+    return render(request, "admin/update_article.html", {"form": form})

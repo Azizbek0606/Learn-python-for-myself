@@ -1,0 +1,14 @@
+{% extends 'admin/admin_panel.html' %}
+
+{% block context_index %}
+
+<div class="container">
+    <div class="wrapper_article_form">
+  <form method="post" class="update_form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Update</button>
+  </form>
+</div>
+</div>
+{% endblock context_index %}

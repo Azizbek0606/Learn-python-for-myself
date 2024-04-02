@@ -196,3 +196,24 @@
   border: 1px solid #722c2c66;
   background-color: #722c2c45;
 }
+.update_form label,
+.update_form [type='checkbox'],
+.update_form br {
+  display: none !important;
+}
+
+.update_form label[for='id_image'] {
+  display: block !important;
+}
+
+.update_form button[type='submit'] {
+  width: 100%;
+  height: 50px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  background-color: #132123;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
