@@ -1,10 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .serializers import CategorySerializer, TagSerializer
 from django.contrib import messages
-
+from forms import *
 
 # Create your views here.
 
@@ -77,3 +77,15 @@ def delete_this_article(request, id):
     article.delete()
     messages.success(request, "Maqola muvaffaqiyatli o'chirildi!")
     return redirect("/user/panel/")
+
+
+def article_update_view(request, id):
+    article = get_object_or_404(Article, id=id)
+    if request.method == "POST":
+        form = ArticleForm(request.POST, instance=article)
+        if form.is_valid():
+            form.save()
+            return redirect("/user/panel/", id=article.id)
+    else:
+        form = ArticleForm(instance=article)
+    return render(request, "articles/article_form.html", {"form": form})
