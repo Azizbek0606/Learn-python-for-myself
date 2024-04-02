@@ -24,7 +24,7 @@
                 <ul>
                     <li><a href="/"><i class="fa-solid fa-house"></i> Home</a></li>
                     {% if request.user.is_superuser %}
-                    <li><a href="{% url 'main_app:show_article_form' %}"><i class="fa-solid fa-circle-plus"></i> Add article</a></li>
+                    <li><a href="{% url 'main_app:admin_panel' %}"><i class="fa-solid fa-user"></i> Admin Panel</a></li>
                     {% endif %}
                     <li class="category_btn"><i class="fa-solid fa-list"></i> Categories</li>
                     <li class="tags_btn logo_nav_block"><i class="fa-solid fa-list"></i> Tags</li>
@@ -35,13 +35,7 @@
     </div>
 </header>
 <div class="only_header" style="height: 100px;"></div>
-{% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <li class="{{ message.tags }}">{{ message }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
+
 <div class="category_list">
     <div class="list_wrapper">
         <div class="categories_text_wrapper">

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/admin_style.css' %}">
+    <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <title>first lesson</title>
+</head>
+
+<body>
+</body>
+
+<div class="admin_header_wrapper">
+    <div class="admin_panel_header">
+        <div class="logo_nav_block">
+            <i class="fa-solid fa-earth-americas"></i>
+            Blog
+        </div>
+        <div class="admin_header_context_wrapper">
+            <ul>
+                <li class="logo_nav_block admin_header_context btn_for_back">
+                    <a href="{% url 'main_app:admin_panel' %}"><i class="fa-solid fa-chevron-left"></i> Go Back</a>
+                </li>
+                <li class="logo_nav_block admin_header_context">
+                    <a href="/"><i class="fa-solid fa-home"></i> Home</a>
+                </li>
+                <li class="logo_nav_block admin_header_context">
+                    <a href="{% url 'main_app:show_article_form' %}"><i class="fa-solid fa-circle-plus"></i> Create</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li class="{{ message.tags }}">{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% block context_index %}
+{% endblock %}
+<script src="{% static 'js/app.js' %}"></script>
+<script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
+
+</html>

@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .models import *
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .serializers import CategorySerializer , TagSerializer
+from .serializers import CategorySerializer, TagSerializer
 from django.contrib import messages
 
 
@@ -34,11 +34,8 @@ def show_article(request):
 def show_article_form(request):
     categoryes = Categories.objects.all()
     tags = Tags.objects.all()
-    data = {
-        "categoryes": categoryes,
-        "tags":tags
-    }
-    return render(request, "add_article.html", context=data)
+    data = {"categoryes": categoryes, "tags": tags}
+    return render(request, "admin/add_article.html", context=data)
 
 
 def add_article(request):
@@ -52,11 +49,31 @@ def add_article(request):
         category = Categories.objects.get(id=category_id)
         tag = Tags.objects.get(id=tag_id)
         new_article = Article(
-            title=title, content=content, author=author, category=category, image=image , tag=tag
+            title=title,
+            content=content,
+            author=author,
+            category=category,
+            image=image,
+            tag=tag,
         )
         new_article.save()
         messages.success(request, "Maqola muvaffaqiyatli qo'shildi!")
-        return redirect("/")
+        return redirect("/user/panel/")
     else:
         categories = Categories.objects.all()
-        return render(request, "add_article.html", {"categories": categories})
+        return render(request, "admin/add_article.html", {"categories": categories})
+
+
+def admin_panel(request):
+    all_article = Article.objects.all()
+    data = {
+        "article": all_article,
+    }
+    return render(request, "admin/delete_update.html", context=data)
+
+
+def delete_this_article(request, id):
+    article = Article.objects.get(id=id)
+    article.delete()
+    messages.success(request, "Maqola muvaffaqiyatli o'chirildi!")
+    return redirect("/user/panel/")

@@ -1,0 +1,62 @@
+{% extends "admin/admin_panel.html" %}
+{% block context_index %}
+<div class="container">
+    <div class="article_list_wrapper">
+        <div class="delete_modal">
+            <div class="main_delete_block">
+                <p>Are you sure you want to delete this article?</p>
+                <div class="delete_btn_wrapper">
+                    <div class="delete_modal_btn">
+                        <p><i class="fa-solid fa-circle-xmark"></i> Cancel</p>
+                    </div>
+                    <div>
+                        <a class="delete_article_url" href="/">
+                            <i class="fa-solid fa-trash"></i> Delete
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% for i in article %}
+        <div class="article_card">
+            <div class="article_image_block">
+                <img src="{{ i.image.url }}" alt="article image">
+            </div>
+            <div class="article_context_block">
+                <div class="article_title">
+                    <div>
+                        <p>{{ i.title }}</p>
+                    </div>
+                    <div class="article_icon_wrapper">
+                        <p class="delete_modal_btn" article_id="{% url 'main_app:delete_this_article' i.id %}"><i class="fa-solid fa-trash"></i></p>
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </div>
+                </div>
+                <div class="article_content">
+                    {{ i.content | truncatewords:10 }}
+                </div>
+                <div class="like_comment_wrapper_block">
+                    <div class="like"><i class="fa-regular fa-heart"></i>
+                        <p>{{ i.likes }}</p>
+                    </div>
+                    <div class="comment"><i class="fa-regular fa-comment"></i>
+                        <p>{{ i.comments }}</p>
+                    </div>
+                    <div class="views"><i class="fa-solid fa-eye"></i>
+                        <p>{{ i.views }}</p>
+                    </div>
+                    <div class="date">
+                        <i class="fa-solid fa-calendar"></i>
+                        <p>{{ i.updated | date:'d.n.Y | H : i' }}</p>
+                    </div>
+                    <div class="article_author">
+                        <i class="fa-solid fa-user"></i>
+                        <p>{{ i.author }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock context_index %}
