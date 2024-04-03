@@ -1,8 +1,9 @@
 {% extends "wrapper.html" %}
 {% block context_index %}
 <div class="container">
-    <div class="blog_card_wrapper">
 
+    {% if article %}
+    <div class="blog_card_wrapper">
         {% for i in article %}
         <div class="card card_{{ i.tag }}">
             <div class="image_block" this_block_image="{{i.image.url}}">
@@ -34,8 +35,16 @@
 
         </div>
         {% endfor %}
-
     </div>
+    {% else %}
+    <div class="article_not_found">
+        <h1>
+            (˘･_･˘) Sorry. We couldn't find any articles
+        </h1>
+        <a href="/">Go back</a>
+    </div>
+    {% endif %}
+
 </div>
 {% endblock context_index %}
 <!--  -->

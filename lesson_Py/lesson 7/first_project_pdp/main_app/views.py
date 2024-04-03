@@ -108,9 +108,9 @@ def search_method(request):
         answer = Article.objects.filter(
             Q(title__icontains=query) | Q(content__icontains=query)
         )
-        if answer is not None:
+        if answer:
             messages.success(request, f"'{len(answer)}' article was found")
         else:
-            messages.info(request, f"'{len(answer)}' article was not found")
+            messages.info(request, "article was not found")
     data = {"article": answer}
     return render(request, "index.html", context=data)

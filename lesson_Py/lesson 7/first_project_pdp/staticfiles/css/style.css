@@ -280,49 +280,75 @@ header {
 }
 .message {
   position: fixed;
-  width: 300px;
+  width: 50px;
   height: 50px;
-  left: 50px;
-  top: 50px;
-  border: 1px solid #722c2c66;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  border: 1px solid transparent;
   background-color: #722c2cc2;
-  display: grid;
-  place-content: center;
   border-radius: 10px;
   text-align: center;
   padding: 10px;
   font-size: 0.8em;
+  overflow: hidden;
+  animation: anime_message 7s linear forwards;
 }
 .message_success {
   border-color: #5d9b7ace;
   background-color: #1c3c2b;
 }
+
 .message_info {
   border-color: #9b9b5dce;
   background-color: #3c391c;
 }
-.message {
-  transform: translateX(-500px);
-  animation: anime_message 4s linear forwards;
-}
 @keyframes anime_message {
   0% {
-    transform: translateX(-200px);
+    transform: translate(50%, 0px) scale(0.5);
+    opacity: 0;
+    animation-timing-function: ease-out;
   }
-  25% {
-    transform: translateX(-100px);
+  20% {
+    transform: translate(50%, 0px) scale(0.7);
+    opacity: 0.5;
+    animation-timing-function: ease-in-out;
   }
-  50% {
-    transform: translateX(50px);
+  40% {
+    transform: translate(5%, 120px) scale(0.85);
+    opacity: 0.7;
+    width: 50px;
+    animation-timing-function: ease-in-out;
   }
-  75% {
-    transform: translateX(0px);
+  60% {
+    transform: translate(-50%, 120px) scale(1.1);
+    opacity: 0.9;
+    width: 300px;
+    animation-timing-function: ease-out;
+  }
+  79% {
+    transform: translate(-50%, 120px) scale(1.1);
+    opacity: 0.9;
+    width: 300px;
+    animation-timing-function: ease-in;
+  }
+  80% {
+    transform: translate(45%, 120px) scale(1.05);
+    opacity: 1;
+    width: 50px;
+    animation-timing-function: ease-out;
   }
   90% {
-    transform: translateX(-50px);
+    transform: translate(45%, 120px) scale(1.05);
+    opacity: 1;
+    width: 50px;
+    animation-timing-function: ease-in-out;
   }
   100% {
-    transform: translateX(-500px);
+    transform: translate(45%, -200px) scale(1) rotate(0deg);
+    opacity: 1;
+    width: 50px;
+    animation-timing-function: ease-in;
   }
 }
 .result_block {
@@ -348,7 +374,15 @@ header {
   border-radius: 5px;
   padding: 5px;
 }
-
 .result_block .result_wrapper:hover {
   background-color: #2c667266;
+}
+.article_not_found {
+  width: 100%;
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
 }
