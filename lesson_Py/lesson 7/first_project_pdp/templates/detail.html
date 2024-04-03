@@ -4,16 +4,86 @@
     <div class="main_article_wrapper">
         <div class="image_title_wrapper">
             <div class="detail_article_image">
-                <img src="{{article.imahe}}" alt="">
+                <img src="{{ article.image.url }}" alt="">
             </div>
             <div class="detail_article_title">
-                <div class="article_title_block"></div>
-                <div class="article_information_block"></div>
+                <div class="article_title_block">
+                    <h2>
+                        {{ article.title }}
+                    </h2>
+                </div>
+                <div class="article_information_block">
+                    <div class="article_author">
+                        <i class="fa-solid fa-user"></i>
+                        <p>{{ article.author }}</p>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-circle"></i>
+                        <p>{{ article.tag }}</p>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-list"></i>
+                        <p>{{ article.category }}</p>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-comment"></i>
+                        <p>{{ article.comments }}</p>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-eye"></i>
+                        <p>{{ article.views }}</p>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-heart"></i>
+                        <p>{{ article.likes }}</p>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-calendar"></i>
+                        <p>{{ article.updated | date:"d.N.Y | D"}}</p>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-clock"></i>
+                        <p>{{ article.updated | date:"H:m"}}</p>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="main_content_block">
-
+            {{ article.content }}
         </div>
+        <div class="add_comment">
+            <h3><i class="fa-solid fa-comment"></i> Add your comment</h3>
+            <form action="{% url 'main_app:add_comment' article.id %}" method="post" class="comment_form">
+                <input type="text" placeholder="Write your comment" name="comment">
+                <input type="submit">
+                {% csrf_token %}
+            </form>
+        </div>
+    </div>
+    <div class="comment_wrappper">
+        {% for i in comments %}
+        <div class="comment">
+            <div class="comment_author article_author">
+                <i class="fa-solid fa-user"></i> {{ i.author }}
+            </div>
+            <div class="comment_body">
+                <p>
+                    <i class="fa-solid fa-comment"></i>
+                    {{ i.comment }}
+                </p>
+            </div>
+            <div class="comment_date">
+                <p>
+                    <i class="fa-solid fa-calendar"></i>
+                    {{ i.date | date:"d.N.Y | D" }}
+                </p>
+                <p>
+                    <i class="fa-solid fa-clock"></i>
+                    {{ i.date | date:"H:m" }}
+                </p>
+            </div>
+        </div>
+        {% endfor %}
     </div>
 </div>
 {% endblock context_index %}

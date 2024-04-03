@@ -170,3 +170,9 @@ input.addEventListener('input', (e) => {
 });
 
 // search method was ended
+
+// comment from
+
+document.querySelector(".add_comment > h3").addEventListener('click', () => {
+    document.querySelector(".add_comment").classList.toggle('active_comment_block');
+});

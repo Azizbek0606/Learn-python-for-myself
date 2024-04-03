@@ -127,7 +127,26 @@ def filter_by_category(request, id):
     data = {"article": answer}
     return render(request, "index.html", context=data)
 
+
 def details(request, id):
     article = Article.objects.get(id=id)
-    data = {"article": article}
+    comments = Comment.objects.filter(article=article)
+    data = {"article": article,
+            "comments": comments}
     return render(request, "detail.html", context=data)
+
+
+def add_comment(request, id):
+    article = get_object_or_404(Article, id=id)
+    if request.method == "POST":
+        comment_text = request.POST.get("comment")
+        author = request.user
+        new_comment = Comment(comment=comment_text, author=author, article=article)
+        new_comment.save()
+        article.comments += 1
+        article.save()
+        messages.success(request, "Comment saved successfully")
+        return redirect(f"/details/{id}")
+    else:
+        messages.error(request, "Something went wrong")
+        return render(request, "detail.html", {"article": article})

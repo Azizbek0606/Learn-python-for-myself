@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'nunito';
+  font-family: 'roboto mono';
   text-decoration: none;
   list-style: none;
   color: white;
@@ -411,12 +411,11 @@ header {
   height: 100%;
   border: 1px solid #2c667266;
   border-radius: 10px;
-  padding: 5px;
 }
 .detail_article_image img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   border-radius: 10px;
 }
 .detail_article_title {
@@ -424,11 +423,110 @@ header {
   height: 100%;
   border: 1px solid #2c667266;
   border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 }
 .main_content_block {
   width: 100%;
-  height: 250px;
+  height: auto;
+  min-height: 250px;
   border: 1px solid #2c667266;
   border-radius: 10px;
   padding: 10px;
+}
+.article_title_block {
+  height: 120px;
+  border: 1px solid #2c667266;
+  border-radius: 5px;
+  padding: 10px;
+}
+.article_information_block {
+  width: 100%;
+  height: 50px;
+  border-radius: 5px;
+  border: 1px solid #2c667266;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+.article_author {
+  background: #2c667266;
+  border-radius: 5px;
+  padding: 7px;
+}
+.article_information_block div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.add_comment {
+  width: 100%;
+  height: 50px;
+  border-radius: 5px;
+  border: 1px solid #2c667266;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px;
+  transition: 0.5s;
+  overflow: hidden;
+}
+.add_comment h3 {
+  cursor: pointer;
+}
+.comment_form {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.comment_form input {
+  height: 50px;
+  border: 1px solid #2c667266;
+  background-color: transparent;
+  outline: none;
+  padding: 10px;
+  border-radius: 5px;
+}
+.comment_form input:first-child {
+  width: 97%;
+}
+.active_comment_block {
+  height: 110px;
+  gap: 10px;
+  align-items: flex-start;
+}
+.comment_wrappper {
+  width: 100%;
+  height: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid #2c667266;
+  border-radius: 10px;
+}
+.comment {
+  padding: 10px;
+  border: 1px solid #2c667266;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.comment_date {
+  border-top: 1px solid #2c667266;
+  padding: 5px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.7em;
 }
