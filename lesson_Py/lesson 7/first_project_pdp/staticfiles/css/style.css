@@ -278,7 +278,7 @@ header {
 .like_comment_wrapper_block div p {
   font-size: 12px;
 }
-.message_red {
+.message {
   position: fixed;
   width: 300px;
   height: 50px;
@@ -289,12 +289,15 @@ header {
   display: grid;
   place-content: center;
   border-radius: 10px;
+  text-align: center;
+  padding: 10px;
+  font-size: 0.8em;
 }
-.message_green {
+.message_success {
   border-color: #5d9b7ace;
   background-color: #1c3c2b;
 }
-.message_yellow {
+.message_info {
   border-color: #9b9b5dce;
   background-color: #3c391c;
 }

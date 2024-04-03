@@ -13,15 +13,23 @@
 <body>
 </body>
 <header>
-    {% if messages %}
-    {% for message in messages %}
-    <div class="message_red message">
-        <p>
-            {{ message.tags }} | {{ message }}
-        </p>
-    </div>
-    {% endfor %}
-    {% endif %}
+{% if messages %}
+{% for message in messages %}
+<div class="message_{{ message.tags }} message">
+    <p>
+        {% if message.tags == "success" %}
+        <i class="fa-solid fa-circle-check"></i>
+        {% elif message.tags == "info" %}
+        <i class="fa-solid fa-circle-info"></i>
+        {% else %}
+        <i class="fa-solid fa-circle-exclamation"></i>
+        {% endif %}
+        {{ message }}
+    </p>
+</div>
+{% endfor %}
+{% endif %}
+
     <div class="container">
         <div class="header_block">
             <div class="logo">

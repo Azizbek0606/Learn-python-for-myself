@@ -65,9 +65,10 @@ def add_article(request):
             tag=tag,
         )
         new_article.save()
-        messages.success(request, "Maqola muvaffaqiyatli qo'shildi!")
+        messages.success(request, "Article saved successfully")
         return redirect("/user/panel/")
     else:
+        messages.error(request, "Something went wrong")
         categories = Categories.objects.all()
         return render(request, "admin/add_article.html", {"categories": categories})
 
@@ -83,7 +84,7 @@ def admin_panel(request):
 def delete_this_article(request, id):
     article = Article.objects.get(id=id)
     article.delete()
-    messages.success(request, "Maqola muvaffaqiyatli o'chirildi!")
+    messages.success(request, "Article deleted successfully")
     return redirect("/user/panel/")
 
 
@@ -93,8 +94,10 @@ def article_update_view(request, id):
         form = ArticleForm(request.POST, instance=article)
         if form.is_valid():
             form.save()
+            messages.success(request, "Article was successfully updated")
             return redirect("/user/panel/", id=article.id)
     else:
+        messages.error(request, "Something went wrong")
         form = ArticleForm(instance=article)
     return render(request, "admin/update_article.html", {"form": form})
 
@@ -105,5 +108,9 @@ def search_method(request):
         answer = Article.objects.filter(
             Q(title__icontains=query) | Q(content__icontains=query)
         )
+        if answer is not None:
+            messages.success(request, f"'{len(answer)}' article was found")
+        else:
+            messages.info(request, f"'{len(answer)}' article was not found")
     data = {"article": answer}
     return render(request, "index.html", context=data)
