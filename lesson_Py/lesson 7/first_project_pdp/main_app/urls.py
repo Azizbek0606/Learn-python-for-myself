@@ -19,5 +19,6 @@ urlpatterns = [
         name="delete_this_article",
     ),
     path("update/<id>", views.article_update_view, name="update_article"),
-    path('search/' , views.search_method , name="search")
+    path("search/", views.search_method, name="search"),
+    path("by/tags/<id>" , views.filter_by_tags, name="filter_by_tags"),
 ]

@@ -13,22 +13,22 @@
 <body>
 </body>
 <header>
-{% if messages %}
-{% for message in messages %}
-<div class="message_{{ message.tags }} message">
-    <p>
-        {% if message.tags == "success" %}
-        <i class="fa-solid fa-circle-check"></i>
-        {% elif message.tags == "info" %}
-        <i class="fa-solid fa-circle-info"></i>
-        {% else %}
-        <i class="fa-solid fa-circle-exclamation"></i>
-        {% endif %}
-        {{ message }}
-    </p>
-</div>
-{% endfor %}
-{% endif %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="message_{{ message.tags }} message">
+        <p>
+            {% if message.tags == "success" %}
+            <i class="fa-solid fa-circle-check"></i>
+            {% elif message.tags == "info" %}
+            <i class="fa-solid fa-circle-info"></i>
+            {% else %}
+            <i class="fa-solid fa-circle-exclamation"></i>
+            {% endif %}
+            {{ message }}
+        </p>
+    </div>
+    {% endfor %}
+    {% endif %}
 
     <div class="container">
         <div class="header_block">
@@ -44,7 +44,7 @@
                     <li><a href="{% url 'main_app:admin_panel' %}"><i class="fa-solid fa-user"></i> Admin Panel</a></li>
                     {% endif %}
                     <li class="category_btn"><i class="fa-solid fa-list"></i> Categories</li>
-                    <li class="tags_btn logo_nav_block"><i class="fa-solid fa-list"></i> Tags</li>
+                    <li class="tags_btn logo_nav_block"><i class="fa-solid fa-circle"></i> Tags</li>
                     <li class="logo_nav_block search_btn_nav"><i class="fa-solid fa-magnifying-glass"></i> Search</li>
                 </ul>
             </div>

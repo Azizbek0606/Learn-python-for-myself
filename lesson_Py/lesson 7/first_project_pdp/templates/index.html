@@ -17,7 +17,7 @@
                     <p>{{ i.title }}</p>
                 </div>
                 <div class="main_idea">
-                    <p>{{ i.content}}</p>
+                    <p>{{ i.content | truncatewords:10}}</p>
                 </div>
                 <div class="like_comment_wrapper_block">
                     <div class="like"><i class="fa-regular fa-heart"></i>

@@ -114,3 +114,8 @@ def search_method(request):
             messages.info(request, "article was not found")
     data = {"article": answer}
     return render(request, "index.html", context=data)
+
+def filter_by_tags(request , id):
+    answer = Article.objects.filter(tag__id=id)
+    data = {"article": answer}
+    return render(request, "index.html", context=data)

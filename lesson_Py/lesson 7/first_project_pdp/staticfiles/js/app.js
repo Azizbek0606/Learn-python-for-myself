@@ -31,7 +31,7 @@ function getCategory(html_element, into_url) {
                     main_block_tag.appendChild(a);
                     a.textContent = data[i].name;
                     a.style.color = color;
-                    a.href = "/";
+                    a.href = `http://127.0.0.1:8000/by/tags/${i + 1}`;
                     html_element.appendChild(main_block_tag);
                 }
             }
@@ -153,7 +153,6 @@ input.addEventListener('input', (e) => {
             article.title.toLowerCase().includes(value) ||
             article.content.toLowerCase().includes(value)
         );
-
         result.forEach(article => {
             let p = document.createElement('p');
             let subtitle = document.createElement('h6');
@@ -166,7 +165,6 @@ input.addEventListener('input', (e) => {
             result_wrapper.appendChild(subtitle);
             result_block.appendChild(result_wrapper);
         });
-
         addClickListenerToResults();
     }
 });
