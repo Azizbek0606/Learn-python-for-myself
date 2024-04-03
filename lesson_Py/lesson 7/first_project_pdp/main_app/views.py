@@ -115,7 +115,19 @@ def search_method(request):
     data = {"article": answer}
     return render(request, "index.html", context=data)
 
-def filter_by_tags(request , id):
+
+def filter_by_tags(request, id):
     answer = Article.objects.filter(tag__id=id)
     data = {"article": answer}
     return render(request, "index.html", context=data)
+
+
+def filter_by_category(request, id):
+    answer = Article.objects.filter(category__id=id)
+    data = {"article": answer}
+    return render(request, "index.html", context=data)
+
+def details(request, id):
+    article = Article.objects.get(id=id)
+    data = {"article": article}
+    return render(request, "detail.html", context=data)

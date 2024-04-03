@@ -20,5 +20,7 @@ urlpatterns = [
     ),
     path("update/<id>", views.article_update_view, name="update_article"),
     path("search/", views.search_method, name="search"),
-    path("by/tags/<id>" , views.filter_by_tags, name="filter_by_tags"),
+    path("by/tags/<id>", views.filter_by_tags, name="filter_by_tags"),
+    path("by/category/<id>", views.filter_by_category, name="filter_by_category"),
+    path('details/<id>', views.details, name="details"),
 ]

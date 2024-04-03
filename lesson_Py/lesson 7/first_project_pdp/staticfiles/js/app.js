@@ -11,7 +11,7 @@ function getCategory(html_element, into_url) {
                 for (let i = 0; i < data.length; i++) {
                     let a = document.createElement('a');
                     a.textContent = data[i].name;
-                    a.href = "/";
+                    a.href = `http://127.0.0.1:8000/by/category/${i + 1}`;
                     html_element.appendChild(a);
                 }
             } else {
