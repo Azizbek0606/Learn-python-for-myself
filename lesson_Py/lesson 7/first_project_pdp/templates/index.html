@@ -4,7 +4,7 @@
     <div class="blog_card_wrapper">
 
         {% for i in article %}
-        <div class="card">
+        <div class="card card_{{ i.tag }}">
             <div class="image_block" this_block_image="{{i.image.url}}">
                 <div class="author">
                     <p><i class="fa-solid fa-user"></i> {{i.author}}</p>
@@ -30,7 +30,6 @@
                     </div>
                 </div>
                 <button class="btn_main">Read more</button>
-
             </div>
 
         </div>

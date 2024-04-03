@@ -1,3 +1,4 @@
+// search , tags and categories methods is beginning
 let url = ["http://127.0.0.1:8000/api/category/", "http://127.0.0.1:8000/api/tag/"]
 
 function getCategory(html_element, into_url) {
@@ -36,10 +37,6 @@ function getCategory(html_element, into_url) {
             }
         })
 }
-
-
-
-
 function get_category_tag(btn, list, wrapper_block, dynamic_url, class_name) {
     for (let i = 0; i < btn.length; i++) {
         btn[i].addEventListener('click', () => {
@@ -68,13 +65,16 @@ for (let i = 0; i < search_block.length; i++) {
         document.querySelector('.search_block').classList.toggle('active_search_block');
     });
 }
+// search , tags , categories menu methods was ended
+
+// show article author name is beginning
 let image_blocks = document.querySelectorAll('.image_block');
 for (let i = 0; i < image_blocks.length; i++) {
     image_blocks[i].style.cssText = `background-image: url(${image_blocks[i].getAttribute("this_block_image")});
     background-repeat: no-repeat;
     background-size: contain;
-    background-position: center;`};
-
+    background-position: center;`
+};
 
 let card = document.querySelectorAll(".card");
 let author = document.querySelectorAll(".author");
@@ -87,7 +87,10 @@ for (let i = 0; i < card.length; i++) {
         author[i].style.transform = "";
     });
 }
+// show article author name was ended 
 
+
+// go back buttons 
 let path = window.location.pathname;
 
 if (path != "/user/panel/") {
@@ -95,7 +98,10 @@ if (path != "/user/panel/") {
 } else {
     document.querySelector('.btn_for_back').style.display = "none";
 }
+// go back button method was ended
 
+
+// delete modal methods is beginning
 let delete_modal_btn = document.querySelectorAll('.delete_modal_btn');
 let delete_modal = document.querySelector(".delete_modal")
 let delete_article_url = document.querySelector('.delete_article_url');
@@ -105,3 +111,64 @@ for (let i = 0; i < delete_modal_btn.length; i++) {
         delete_article_url.href = `${delete_modal_btn[i].getAttribute("article_id")}`
     });
 }
+// delete modal methods was ended
+
+// search method is beginning
+let all_articles = [];
+let isArticlesFetched = false;
+
+function get_articles_title() {
+    if (!isArticlesFetched) {
+        fetch("http://127.0.0.1:8000/api/article/")
+            .then(response => response.json())
+            .then(data => {
+                all_articles = data;
+                isArticlesFetched = true;
+            })
+            .catch(error => console.error("Fetching articles failed:", error));
+    }
+}
+
+let input = document.querySelector('input');
+let result_block = document.querySelector('.result_block');
+
+function addClickListenerToResults() {
+    for (let i = 0; i < result_block.children.length; i++) {
+        result_block.children[i].addEventListener("click", () => {
+            input.value = result_block.children[i].firstChild.textContent;
+            result_block.innerHTML = '';
+        });
+    }
+}
+
+input.addEventListener('input', (e) => {
+    if (!isArticlesFetched) {
+        get_articles_title();
+    }
+    let value = e.target.value.toLowerCase();
+    result_block.innerHTML = '';
+
+    if (value.length) {
+        let result = all_articles.filter(article =>
+            article.title.toLowerCase().includes(value) ||
+            article.content.toLowerCase().includes(value)
+        );
+
+        result.forEach(article => {
+            let p = document.createElement('p');
+            let subtitle = document.createElement('h6');
+            let result_wrapper = document.createElement('div');
+            result_wrapper.className = 'result_wrapper';
+            subtitle.className = 'subtitle_article_search';
+            subtitle.textContent = article.content.split(' ').slice(0, 3);
+            p.textContent = article.title.split(' ').slice(0, 3);
+            result_wrapper.appendChild(p);
+            result_wrapper.appendChild(subtitle);
+            result_block.appendChild(result_wrapper);
+        });
+
+        addClickListenerToResults();
+    }
+});
+
+// search method was ended

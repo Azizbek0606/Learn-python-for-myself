@@ -18,7 +18,7 @@
             </div>
         </div>
         {% for i in article %}
-        <div class="article_card">
+        <div class="article_card card_{{i.tag}}">
             <div class="article_image_block">
                 <img src="{{ i.image.url }}" alt="article image">
             </div>
@@ -48,7 +48,11 @@
                     </div>
                     <div class="date">
                         <i class="fa-solid fa-calendar"></i>
-                        <p>{{ i.updated | date:'d.n.Y | H : i' }}</p>
+                        <p>{{ i.updated | date:'d.n.Y' }}</p>
+                    </div>
+                    <div class="time">
+                        <i class="fa-solid fa-clock"></i>
+                        <p> {{ i.updated | date:'H : i' }}</p>
                     </div>
                     <div class="article_author">
                         <i class="fa-solid fa-user"></i>

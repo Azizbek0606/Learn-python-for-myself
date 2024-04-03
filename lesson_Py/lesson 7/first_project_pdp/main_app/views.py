@@ -1,9 +1,10 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from .models import *
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .serializers import CategorySerializer, TagSerializer
+from .serializers import CategorySerializer, TagSerializer, ArticleTitleSerializer
+from django.db.models import Q
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
+from .models import *
 from .forms import *
 
 # Create your views here.
@@ -20,6 +21,13 @@ class TagsListApi(APIView):
     def get(self, request):
         tag = Tags.objects.all()
         serializer = TagSerializer(tag, many=True)
+        return Response(serializer.data)
+
+
+class ArticleTitleListApi(APIView):
+    def get(self, request):
+        article = Article.objects.all()
+        serializer = ArticleTitleSerializer(article, many=True)
         return Response(serializer.data)
 
 
@@ -89,3 +97,13 @@ def article_update_view(request, id):
     else:
         form = ArticleForm(instance=article)
     return render(request, "admin/update_article.html", {"form": form})
+
+
+def search_method(request):
+    if request.method == "GET":
+        query = request.GET.get("search")
+        answer = Article.objects.filter(
+            Q(title__icontains=query) | Q(content__icontains=query)
+        )
+    data = {"article": answer}
+    return render(request, "index.html", context=data)

@@ -7,12 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
-    <title>first lesson</title>
+    <title>First lesson</title>
 </head>
 
 <body>
 </body>
 <header>
+    {% if messages %}
+    {% for message in messages %}
+    <div class="message_red message">
+        <p>
+            {{ message.tags }} | {{ message }}
+        </p>
+    </div>
+    {% endfor %}
+    {% endif %}
     <div class="container">
         <div class="header_block">
             <div class="logo">
@@ -40,8 +49,8 @@
     <div class="list_wrapper">
         <div class="categories_text_wrapper">
         </div>
-        <div class="category_nav_btn_wrapper">
-            <p class="category_btn"><i class="fa-solid fa-chevron-up"></i></p>
+        <div class="category_nav_btn_wrapper category_btn">
+            <p><i class="fa-solid fa-chevron-up"></i></p>
         </div>
     </div>
 </div>
@@ -49,20 +58,25 @@
     <div class="tags_wrapper">
         <div class="tags_text_wrapper">
         </div>
-        <div class="tags_nav_btn_wrapper">
-            <p class="tags_btn"><i class="fa-solid fa-chevron-up"></i></p>
+        <div class="tags_nav_btn_wrapper tags_btn">
+            <p><i class="fa-solid fa-chevron-up"></i></p>
         </div>
     </div>
 </div>
 <div class="search_block">
     <div class="search_input_wrapper">
-        <form action="" method="get">
-            <input type="text" name="search" placeholder="Search">
-            <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-        </form>
-        <div class="logo_nav_block search_btn_nav"><i class="fa-solid fa-chevron-up"></i></div>
+        <div>
+            <form action="{% url 'main_app:search' %}" method="get">
+                <input type="text" name="search" placeholder="Search">
+                <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+            <div class="result_block">
+            </div>
+        </div>
+        <div class="search_back_btn search_btn_nav"><i class="fa-solid fa-chevron-up"></i></div>
     </div>
 </div>
+<div class="btn_for_back"></div>
 {% block context_index %}
 {% endblock context_index %}
 <script src="{% static 'js/app.js' %}"></script>
