@@ -60,7 +60,8 @@
             </form>
         </div>
     </div>
-    <div class="comment_wrappper">
+    {% if comments %}
+    <div class="comment_wrapper">
         {% for i in comments %}
         <div class="comment">
             <div class="comment_author article_author">
@@ -85,5 +86,12 @@
         </div>
         {% endfor %}
     </div>
+    {% else %}
+    <br>
+    <center>
+        <h3>>_< No comments yet</h3>
+    </center>
+    <br><br>
+    {% endif %}
 </div>
 {% endblock context_index %}

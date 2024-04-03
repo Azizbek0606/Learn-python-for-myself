@@ -170,9 +170,10 @@
   background-color: #132123;
   padding: 10px;
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  flex-direction: column;
+  text-align: center;
   border-radius: 10px;
 }
 .main_delete_block > p {
