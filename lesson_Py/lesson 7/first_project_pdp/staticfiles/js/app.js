@@ -11,7 +11,7 @@ function getCategory(html_element, into_url) {
                 for (let i = 0; i < data.length; i++) {
                     let a = document.createElement('a');
                     a.textContent = data[i].name;
-                    a.href = `http://127.0.0.1:8000/by/category/${i + 1}`;
+                    a.href = `http://127.0.0.1:8000/by/category/${data[i].id}`;
                     html_element.appendChild(a);
                 }
             } else {
@@ -31,7 +31,7 @@ function getCategory(html_element, into_url) {
                     main_block_tag.appendChild(a);
                     a.textContent = data[i].name;
                     a.style.color = color;
-                    a.href = `http://127.0.0.1:8000/by/tags/${i + 1}`;
+                    a.href = `http://127.0.0.1:8000/by/tags/${data[i].id}`;
                     html_element.appendChild(main_block_tag);
                 }
             }
@@ -159,8 +159,8 @@ input.addEventListener('input', (e) => {
             let result_wrapper = document.createElement('div');
             result_wrapper.className = 'result_wrapper';
             subtitle.className = 'subtitle_article_search';
-            subtitle.textContent = article.content.split(' ').slice(0, 3);
-            p.textContent = article.title.split(' ').slice(0, 3);
+            subtitle.textContent = article.content.split(' ').slice(0, 1);
+            p.textContent = article.title.split(' ').slice(0, 1);
             result_wrapper.appendChild(p);
             result_wrapper.appendChild(subtitle);
             result_block.appendChild(result_wrapper);
