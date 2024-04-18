@@ -51,14 +51,24 @@
         <div class="main_content_block">
             {{ article.content }}
         </div>
+        {% if request.user.isautheticated %}
         <div class="add_comment">
             <h3><i class="fa-solid fa-comment"></i> Add your comment</h3>
             <form action="{% url 'main_app:add_comment' article.id %}" method="post" class="comment_form">
-                <input type="text" placeholder="Write your comment" name="comment">
-                <input type="submit">
+                <input type="text" placeholder="Write your comment" name="comment" id="comment" maxlength="250" oninput="limitInput()">
+                <input type="submit" onClick="this.form.submit(); this.disabled=true; this.value='Sending…'; " id="subbtn">
                 {% csrf_token %}
             </form>
+            <div class="comment_info">
+                <div id="letter_inducator">
+                    max letter 25 / 0
+                </div>
+                <div id="words_inducator">
+                    max word 250 / 0
+                </div>
+            </div>
         </div>
+        {% endif %}
     </div>
     {% if comments %}
     <div class="comment_wrapper">

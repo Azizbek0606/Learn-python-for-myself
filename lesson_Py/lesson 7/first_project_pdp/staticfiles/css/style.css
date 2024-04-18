@@ -1,3 +1,7 @@
+@font-face {
+  font-family: "font_name";
+  src: url("../font/Nunito-VariableFont_wght.ttf");
+}
 * {
   margin: 0;
   padding: 0;
@@ -484,27 +488,26 @@ header {
   width: 97%;
 }
 .active_comment_block {
-  height: 110px;
+  height: 140px;
   gap: 10px;
   align-items: flex-start;
   word-wrap: break-word;
 }
 .comment_wrapper {
-  width: 100%;
+  width: 1200px;
   height: auto;
-  display: grid;
-  margin-top: 20px;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  margin: 20px 0px;
   padding: 10px;
   border: 1px solid #2c667266;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   border-radius: 10px;
-  word-wrap: break-word;
 }
 .comment {
   padding: 10px;
-  max-width: 550px;
-  border: 1px solid #2c667266;
+  max-width: 100%;
+  border: 1px solid #ffffff66;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -519,4 +522,11 @@ header {
   align-items: center;
   font-size: 0.7em;
   word-wrap: break-word;
+}
+.comment_info{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.7em !important;
 }
