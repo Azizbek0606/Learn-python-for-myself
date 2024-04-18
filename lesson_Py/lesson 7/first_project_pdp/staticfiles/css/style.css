@@ -487,6 +487,7 @@ header {
   height: 110px;
   gap: 10px;
   align-items: flex-start;
+  word-wrap: break-word;
 }
 .comment_wrapper {
   width: 100%;
@@ -498,13 +499,16 @@ header {
   padding: 10px;
   border: 1px solid #2c667266;
   border-radius: 10px;
+  word-wrap: break-word;
 }
 .comment {
   padding: 10px;
+  max-width: 550px;
   border: 1px solid #2c667266;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
+  word-wrap: break-word;
   gap: 10px;
 }
 .comment_date {
@@ -514,4 +518,5 @@ header {
   justify-content: space-between;
   align-items: center;
   font-size: 0.7em;
+  word-wrap: break-word;
 }
