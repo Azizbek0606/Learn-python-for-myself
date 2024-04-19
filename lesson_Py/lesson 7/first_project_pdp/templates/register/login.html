@@ -25,18 +25,22 @@
                 {% csrf_token %}
                 <div>
                     <p>user name</p>
-                    <input type="text" name="user_name" class="user_name_input" minlength="6" required maxlength="20" >
-                    <p class="check_user_name"><span class="icon_wrapper_user_name"><i class="fa-solid fa-pen"></i></span><span>Write your user name</span></p>
+                    <input type="text" name="user_name" class="user_name_input" minlength="6" required maxlength="20">
+                    <p class="check_user_name"><span class="icon_wrapper_user_name"><i
+                                class="fa-solid fa-pen"></i></span><span>Write your user name</span></p>
                 </div>
                 <div>
                     <p>Password</p>
-                    <input type="password" name="password" required>
-                    <span class="progress_to_password"><p class="progress_vizualization"></p></span>
+                    <input type="password" name="password" required minlength="5" maxlength="30" class="pas_input">
+                    <span class="progress_to_password" style="opacity: 0;">
+                        <p class="progress_vizualization"></p>
+                    </span>
                 </div>
                 <p onclick="form_tab_method()" class="request_to_accunt">
                     If you have not account
                 </p>
-                <input type="submit" value="min length 5 | Submit" class="login_sub_btn" disabled onClick="this.form.submit(); this.disabled=true; this.value='Sending…'; ">
+                <input type="submit" value="min length 5 | Submit" class="login_sub_btn" disabled
+                    onClick="this.form.submit(); this.disabled=true; this.value='Sending…'; ">
             </form>
         </div>
         <div class="sign_up" style="display: none;">
@@ -46,7 +50,11 @@
                 <div class="main_wrapper_input">
                     <div>
                         <p>user name</p>
-                        <input type="text" name="user_name">
+                        <input type="text" name="user_name" class="user_name_input" minlength="6" required
+                            maxlength="20">
+                        <p class="check_user_name"><span class="icon_wrapper_user_name"><i
+                                    class="fa-solid fa-pen"></i></span><span>Write
+                                your user name</span></p>
                     </div>
                     <div>
                         <p>Email</p>
@@ -56,7 +64,10 @@
                 <div class="main_wrapper_input">
                     <div>
                         <p>Password</p>
-                        <input type="password" name="password">
+                        <input type="password" name="password" required minlength="5" maxlength="30" class="pas_input">
+                        <span class="progress_to_password" style="opacity: 0;">
+                            <p class="progress_vizualization"></p>
+                        </span>
                     </div>
                     <div>
                         <p>Password Again</p>
