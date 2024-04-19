@@ -1,6 +1,13 @@
+from django.contrib.auth.models import User
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .serializers import CategorySerializer, TagSerializer, ArticleTitleSerializer
+from rest_framework import generics
+from .serializers import (
+    CategorySerializer,
+    TagSerializer,
+    ArticleTitleSerializer,
+    UserSerializer,
+)
 from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
@@ -29,6 +36,11 @@ class ArticleTitleListApi(APIView):
         article = Article.objects.all()
         serializer = ArticleTitleSerializer(article, many=True)
         return Response(serializer.data)
+
+
+class UserListView(generics.ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
 
 
 def show_article(request):
@@ -150,3 +162,16 @@ def add_comment(request, id):
     else:
         messages.error(request, "Something went wrong")
         return render(request, "detail.html", {"article": article})
+
+
+def login_method(request):
+    # if request.method == "POST":
+    #     username = request.POST.get("username")
+    #     password = request.POST.get("password")
+    #     user = authenticate(username=username, password=password)
+    #     if user is not None:
+    #         login(request, user)
+    #         return redirect("/user/panel/")
+    #     else:
+    #         messages.error(request, "Wrong username or password")
+    return render(request, "register/login.html")

@@ -24,4 +24,6 @@ urlpatterns = [
     path("by/category/<id>", views.filter_by_category, name="filter_by_category"),
     path("details/<id>", views.details, name="details"),
     path("add/comment/<id>", views.add_comment, name="add_comment"),
+    path("user/login", views.login_method, name="login_method"),
+    path("api/users/", views.UserListView.as_view(), name="user-list"),
 ]

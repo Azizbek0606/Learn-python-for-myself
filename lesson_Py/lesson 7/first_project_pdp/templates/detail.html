@@ -51,7 +51,7 @@
         <div class="main_content_block">
             {{ article.content }}
         </div>
-        {% if request.user.isautheticated %}
+        {% if request.user.is_authenticated %}
         <div class="add_comment">
             <h3><i class="fa-solid fa-comment"></i> Add your comment</h3>
             <form action="{% url 'main_app:add_comment' article.id %}" method="post" class="comment_form">

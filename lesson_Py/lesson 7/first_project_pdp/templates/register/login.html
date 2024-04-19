@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/form_style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Registrate</title>
+</head>
+
+<body>
+    <div class="form_wrapper">
+        <div class="table_btn">
+            <button onclick="form_tab_method()" class="btn_tab">
+                Sing up
+            </button>
+        </div>
+        <div class="login_wrapper">
+            <h1>Login</h1>
+            <form action="" method="post">
+                {% csrf_token %}
+                <div>
+                    <p>user name</p>
+                    <input type="text" name="user_name" class="user_name_input" minlength="6" required maxlength="20" >
+                    <p class="check_user_name"><span class="icon_wrapper_user_name"><i class="fa-solid fa-pen"></i></span><span>Write your user name</span></p>
+                </div>
+                <div>
+                    <p>Password</p>
+                    <input type="password" name="password" required>
+                    <span class="progress_to_password"><p class="progress_vizualization"></p></span>
+                </div>
+                <p onclick="form_tab_method()" class="request_to_accunt">
+                    If you have not account
+                </p>
+                <input type="submit" value="min length 5 | Submit" class="login_sub_btn" disabled onClick="this.form.submit(); this.disabled=true; this.value='Sending…'; ">
+            </form>
+        </div>
+        <div class="sign_up" style="display: none;">
+            <h1>Sign Up</h1>
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="main_wrapper_input">
+                    <div>
+                        <p>user name</p>
+                        <input type="text" name="user_name">
+                    </div>
+                    <div>
+                        <p>Email</p>
+                        <input type="email" name="email">
+                    </div>
+                </div>
+                <div class="main_wrapper_input">
+                    <div>
+                        <p>Password</p>
+                        <input type="password" name="password">
+                    </div>
+                    <div>
+                        <p>Password Again</p>
+                        <input type="password" name="conf_pas">
+                    </div>
+                </div>
+                <p onclick="form_tab_method()" class="request_to_accunt">
+                    Do you have already account
+                </p>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+
+    </div>
+    <script src="{% static 'js/login.js' %}"></script>
+</body>
+
+</html>
