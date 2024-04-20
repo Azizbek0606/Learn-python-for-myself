@@ -8,6 +8,7 @@ from django.views.static import serve
 urlpatterns = [
     path("if/you/admin/", admin.site.urls),
     path("", include("main_app.urls", namespace="main_app")),
+    path("login/", include("account.urls", namespace="account")),
     re_path(r"^media/(?P<path>.*)$", serve, {"document_root": settings.MEDIA_ROOT}),
     re_path(r"^static/(?P<path>.*)$", serve, {"document_root": settings.STATIC_ROOT}),
 ]

@@ -285,60 +285,6 @@ header {
 .like_comment_wrapper_block div p {
   font-size: 12px;
 }
-.message {
-  position: fixed;
-  width: 50px;
-  height: 50px;
-  transition: 0.5s;
-  transform: translateX(-50%) translateY(-150px);
-  border: 1px solid transparent;
-  background-color: #722c2cc2;
-  border-radius: 10px;
-  display: grid;
-  place-items: center;
-  padding: 10px;
-  font-size: 0.8em;
-  overflow: hidden;
-  animation: anime_message 4s linear forwards;
-}
-.message_success {
-  border-color: #5d9b7ace;
-  background-color: #1c3c2b;
-}
-.message_info {
-  border-color: #9b9b5dce;
-  background-color: #3c391c;
-}
-@keyframes anime_message {
-  0% {
-    transform: translate(-50%, -150px);
-    width: 50px;
-  }
-  50% {
-    transform: translate(-50%, 150px);
-    width: 50px;
-  }
-  51% {
-    transform: translate(-50%, 150px);
-    width: 300px;
-  }
-  75% {
-    transform: translate(-50%, 150px);
-    width: 300px;
-  }
-  89% {
-    transform: translate(-50%, 150px);
-    width: 300px;
-  }
-  90% {
-    transform: translate(-50%, 150px);
-    width: 50px;
-  }
-  100% {
-    transform: translate(-50%, -150px);
-    width: 50px;
-  }
-}
 .result_block {
   width: 300px;
   height: auto;

@@ -101,31 +101,42 @@ pas_input.forEach((input, index) => {
     });
 });
 
-function check_form(button, username, password) {
-    if (username.length >= 5 && password.length >= 5) {
-        button.disabled = true;  // Faqat muvaffaqiyatli yuborishda tugmani o'chirish
-        button.value = 'Sending…';
-        button.form.submit();
-    } else {
-        button.disabled = false;  // Agar xatolik bo'lsa, tugmani qayta faollashtirish
-        button.value = 'min length 5 | Submit';
-    }
-}
-function check_form(button, username, email, password, confirm_password) {
-    // Formani yuborish tugmachasini dastlabki holatiga qaytarish
-    button.disabled = false;
-    button.value = 'Submit';
 
-    // Barcha shartlar bajarilganmi tekshirish
-    if (username.length >= 6 && email.length >= 5 && password.length >= 5 && confirm_password.length >= 5) {
-        if (password === confirm_password) {
-            button.disabled = true;  // Tugmani o'chirish
-            button.value = 'Sending…'; // Yuborish jarayonida tugmani matnini o'zgartirish
-            button.form.submit(); // Formani yuborish
-        } else {
-            alert('Passwords do not match!'); // Parollar mos kelmasa ogohlantirish
-        }
-    } else {
-        button.value = 'Fill correctly | Submit'; // To'ldirishda xatolik bo'lsa tugmani matnini o'zgartirish
+function check_form(button, ...fields) {
+    const minLengths = [6, 8, 5, 5];
+    const isSignup = fields.length === 4;
+
+    if (isSignup && fields[2] !== fields[3]) {
+        alert('Passwords do not match!');
+        return;
     }
+
+    const allValid = fields.every((field, index) => field.trim().length >= minLengths[index % minLengths.length]);
+
+    if (!allValid) {
+        tempMessage(button, 'something worng or too short', 2000);
+        return;
+    }
+
+    button.disabled = true;
+    button.value = 'Sending…';
+    button.form.submit();
 }
+
+function validateForm(button, ...args) {
+    const allFilled = args.every(arg => arg.trim().length > 0);
+    if (!allFilled) {
+        tempMessage(button, 'Formani toʻldiring', 2000);
+        return;
+    }
+    check_form(button, ...args);
+}
+
+function tempMessage(element, message, duration) {
+    const originalText = element.value;
+    element.value = message;
+    setTimeout(() => {
+        element.value = originalText;
+    }, duration);
+}
+

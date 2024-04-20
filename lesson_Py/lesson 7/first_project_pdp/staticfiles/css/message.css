@@ -1,0 +1,38 @@
+.message {
+    width: 100%;
+    height: 50px;
+    transition: 0.5s;
+    border: 1px solid #722c2cc2;
+    background-color: #722c2cc2;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 50px;
+    font-size: 0.8em;
+    overflow: hidden;
+    top: 0;
+    animation: hideMessage 5s forwards; 
+}
+.message_success {
+    border-color: #5d9b7ace;
+    background-color: #1c3c2b;
+}
+.message_info {
+    border-color: #9b9b5dce;
+    background-color: #3c391c;
+}
+@keyframes hideMessage {
+    0% { opacity: 1; }
+    99% { opacity: 1; }
+    100% { opacity: 0; display: none; }
+}
+.message button{
+    padding: 20px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: transparent !important;
+    border-radius: 5px;
+    font-size: 2em !important;
+}

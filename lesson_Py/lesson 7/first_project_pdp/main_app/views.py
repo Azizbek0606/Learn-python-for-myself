@@ -143,8 +143,7 @@ def filter_by_category(request, id):
 def details(request, id):
     article = Article.objects.get(id=id)
     comments = Comment.objects.filter(article=article)
-    data = {"article": article,
-            "comments": comments}
+    data = {"article": article, "comments": comments}
     return render(request, "detail.html", context=data)
 
 
@@ -162,16 +161,3 @@ def add_comment(request, id):
     else:
         messages.error(request, "Something went wrong")
         return render(request, "detail.html", {"article": article})
-
-
-def login_method(request):
-    # if request.method == "POST":
-    #     username = request.POST.get("username")
-    #     password = request.POST.get("password")
-    #     user = authenticate(username=username, password=password)
-    #     if user is not None:
-    #         login(request, user)
-    #         return redirect("/user/panel/")
-    #     else:
-    #         messages.error(request, "Wrong username or password")
-    return render(request, "register/login.html")

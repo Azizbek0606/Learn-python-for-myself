@@ -158,7 +158,8 @@ body{
 }
 .progress_to_password{
     width: 100%;
-    height: 20px;
+    height: 5px;
+    margin-bottom: 10px;
     border-radius: 50px;
     transition: 0.5s;
 }

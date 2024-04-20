@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/form_style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/message.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -13,6 +14,23 @@
 </head>
 
 <body>
+    {% if messages %}
+    {% for message in messages %}
+    <div class="message_{{ message.tags }} message">
+        <p>
+            {% if message.tags == "success" %}
+            <i class="fa-solid fa-circle-check"></i>
+            {% elif message.tags == "info" %}
+            <i class="fa-solid fa-circle-info"></i>
+            {% else %}
+            <i class="fa-solid fa-circle-exclamation"></i>
+            {% endif %}
+            {{ message }}
+        </p>
+        <button onclick="this.parentNode.style.display = 'none';"><i class="fa-solid fa-xmark-square"></i></button>
+    </div>
+    {% endfor %}
+    {% endif %}
     <div class="form_wrapper">
         <div class="table_btn">
             <button onclick="form_tab_method()" class="btn_tab">
@@ -21,17 +39,18 @@
         </div>
         <div class="login_wrapper">
             <h1>Login</h1>
-            <form action="" method="post">
+            <form action="{% url 'account:login' %}" method="POST">
                 <div>
                     <p>user name</p>
-                    <input type="text" name="user_name" class="user_name_input" id="user_name" minlength="6" required
+                    <input type="text" name="username" class="user_name_input" id="user_name" minlength="6" required
                         maxlength="20">
                     <p class="check_user_name"><span class="icon_wrapper_user_name"><i
                                 class="fa-solid fa-pen"></i></span><span>Write your user name</span></p>
                 </div>
                 <div>
                     <p>Password</p>
-                    <input type="password" name="password" id="password" required minlength="5" maxlength="30" class="pas_input">
+                    <input type="password" name="password" id="password" required minlength="5" maxlength="30"
+                        class="pas_input">
                     <span class="progress_to_password" style="opacity: 0;">
                         <p class="progress_vizualization"></p>
                     </span>
@@ -39,19 +58,21 @@
                 <p onclick="form_tab_method()" class="request_to_accunt">
                     If you have not account
                 </p>
-                <input type="button" onclick="check_form(this, user_name.value, password.value)" value="Submit"
+                <input type="button" onclick="validateForm(this, user_name.value, password.value)" value="Submit"
                     class="login_sub_btn">
-                    {% csrf_token %}
+
+
+                {% csrf_token %}
             </form>
         </div>
         <div class="sign_up" style="display: none;">
             <h1>Sign Up</h1>
-            <form action="" method="post">
+            <form action="{% url 'account:register' %}" method="POST">
                 {% csrf_token %}
                 <div class="main_wrapper_input">
                     <div>
                         <p>user name</p>
-                        <input type="text" name="user_name" class="user_name_input" minlength="6" required
+                        <input type="text" name="username" class="user_name_input" minlength="6" required
                             maxlength="20">
                         <p class="check_user_name"><span class="icon_wrapper_user_name"><i
                                     class="fa-solid fa-pen"></i></span><span>Write
@@ -72,14 +93,16 @@
                     </div>
                     <div>
                         <p>Password Again</p>
-                        <input type="password" name="conf_pas" required minlength="5">
+                        <input type="password" name="password_confirm" required minlength="5">
                     </div>
                 </div>
                 <p onclick="form_tab_method()" class="request_to_accunt">
                     Do you have already account
                 </p>
-                <input type="button" value="Submit" class="login_sub_btn"
-                    onclick="check_form(this, user_name.value, email.value, password.value, conf_pas.value)">
+                <input type="button"
+                    onclick="validateForm(this, username.value, email.value, password.value, password_confirm.value)"
+                    value="Submit" class="login_sub_btn">
+
             </form>
         </div>
 
