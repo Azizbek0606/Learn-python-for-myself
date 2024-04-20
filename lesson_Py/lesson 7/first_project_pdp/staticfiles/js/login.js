@@ -100,3 +100,32 @@ pas_input.forEach((input, index) => {
         }
     });
 });
+
+function check_form(button, username, password) {
+    if (username.length >= 5 && password.length >= 5) {
+        button.disabled = true;  // Faqat muvaffaqiyatli yuborishda tugmani o'chirish
+        button.value = 'Sending…';
+        button.form.submit();
+    } else {
+        button.disabled = false;  // Agar xatolik bo'lsa, tugmani qayta faollashtirish
+        button.value = 'min length 5 | Submit';
+    }
+}
+function check_form(button, username, email, password, confirm_password) {
+    // Formani yuborish tugmachasini dastlabki holatiga qaytarish
+    button.disabled = false;
+    button.value = 'Submit';
+
+    // Barcha shartlar bajarilganmi tekshirish
+    if (username.length >= 6 && email.length >= 5 && password.length >= 5 && confirm_password.length >= 5) {
+        if (password === confirm_password) {
+            button.disabled = true;  // Tugmani o'chirish
+            button.value = 'Sending…'; // Yuborish jarayonida tugmani matnini o'zgartirish
+            button.form.submit(); // Formani yuborish
+        } else {
+            alert('Passwords do not match!'); // Parollar mos kelmasa ogohlantirish
+        }
+    } else {
+        button.value = 'Fill correctly | Submit'; // To'ldirishda xatolik bo'lsa tugmani matnini o'zgartirish
+    }
+}
