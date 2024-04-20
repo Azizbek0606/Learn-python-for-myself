@@ -16,7 +16,7 @@
 <body>
     {% if messages %}
     {% for message in messages %}
-    <div class="message_{{ message.tags }} message">
+    <div class="message_{{ message.tags }} message" style="position: absolute;">
         <p>
             {% if message.tags == "success" %}
             <i class="fa-solid fa-circle-check"></i>
@@ -38,10 +38,11 @@
             </button>
         </div>
         <div class="login_wrapper">
-            <h1>Login</h1>
+            <h1 style="position: absolute; top: 10px; right: 10px;">Login</h1>
             <form action="{% url 'account:login' %}" method="POST">
                 <div>
                     <p>user name</p>
+                    <br>
                     <input type="text" name="username" class="user_name_input" id="user_name" minlength="6" required
                         maxlength="20">
                     <p class="check_user_name"><span class="icon_wrapper_user_name"><i
@@ -49,17 +50,19 @@
                 </div>
                 <div>
                     <p>Password</p>
+                    <br>
                     <input type="password" name="password" id="password" required minlength="5" maxlength="30"
                         class="pas_input">
                     <span class="progress_to_password" style="opacity: 0;">
                         <p class="progress_vizualization"></p>
                     </span>
                 </div>
-                <p onclick="form_tab_method()" class="request_to_accunt">
-                    If you have not account
-                </p>
-                <input type="button" onclick="validateForm(this, user_name.value, password.value)" value="Submit"
-                    class="login_sub_btn">
+                <div>
+                    <p onclick="form_tab_method()" class="request_to_accunt">
+                        --If you have not account--
+                    </p>
+                    <input type="button" onclick="validateForm(this, user_name.value, password.value)" value="Submit" class="login_sub_btn">
+                </div>
 
 
                 {% csrf_token %}
@@ -97,7 +100,7 @@
                     </div>
                 </div>
                 <p onclick="form_tab_method()" class="request_to_accunt">
-                    Do you have already account
+                    -- Do you have already account --
                 </p>
                 <input type="button"
                     onclick="validateForm(this, username.value, email.value, password.value, password_confirm.value)"

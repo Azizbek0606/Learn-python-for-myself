@@ -1,5 +1,5 @@
 // search , tags and categories methods is beginning
-let url = ["http://127.0.0.1:8000/api/category/", "http://127.0.0.1:8000/api/tag/"]
+let url = ["http://172.20.10.3:322/api/category/", "http://172.20.10.3:322/api/tag/"]
 
 function getCategory(html_element, into_url) {
     color_arr = ["#F38181", "#0F4C75", "#14FFEC", "#FCE38A"]
@@ -11,7 +11,7 @@ function getCategory(html_element, into_url) {
                 for (let i = 0; i < data.length; i++) {
                     let a = document.createElement('a');
                     a.textContent = data[i].name;
-                    a.href = `http://127.0.0.1:8000/by/category/${data[i].id}`;
+                    a.href = `http://172.20.10.3:322/by/category/${data[i].id}`;
                     html_element.appendChild(a);
                 }
             } else {
@@ -31,7 +31,7 @@ function getCategory(html_element, into_url) {
                     main_block_tag.appendChild(a);
                     a.textContent = data[i].name;
                     a.style.color = color;
-                    a.href = `http://127.0.0.1:8000/by/tags/${data[i].id}`;
+                    a.href = `http://172.20.10.3:322/by/tags/${data[i].id}`;
                     html_element.appendChild(main_block_tag);
                 }
             }
@@ -119,7 +119,7 @@ let isArticlesFetched = false;
 
 function get_articles_title() {
     if (!isArticlesFetched) {
-        fetch("http://127.0.0.1:8000/api/article/")
+        fetch("http://172.20.10.3:322/api/article/")
             .then(response => response.json())
             .then(data => {
                 all_articles = data;

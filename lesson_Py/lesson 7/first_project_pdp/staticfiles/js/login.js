@@ -23,44 +23,51 @@ function form_tab_method() {
         btn_tab.textContent = "Login";
     }
 }
+const url = "http://172.20.10.3:322/api/users/";
 
-const url = "http://127.0.0.1:8000/api/users/";
+async function fetchUsernames(url) {
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        return data.map(user => user.username);
+    } catch (error) {
+        console.error('Error:', error);
+        return [];
+    }
+}
+
 let usernamesList = [];
 
-function fetchUsernames(url) {
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            usernamesList = data.map(user => user.username);
-        })
-        .catch(error => console.error('Error:', error));
-}
-fetchUsernames(url);
+fetchUsernames(url).then(usernames => {
+    usernamesList = usernames.map(username => username.toLowerCase());
+    console.log(usernamesList);
 
-user_name_input.forEach((input, index) => {
-    input.addEventListener('input', function () {
-        let values = input.value.replace(/ /g, "_").replace(" ", "_");
-        input.value = values;
-        if (values.length === 0) {
-            check_user_name[index].innerHTML = `<p class="check_user_name">
-                <span class="icon_wrapper_user_name"><i class="fa-solid fa-pen"></i></span>
-                <span>Write your user name</span>
-            </p>`;
-        } else if (usernamesList.includes(values.toLowerCase())) {
-            check_user_name[index].innerHTML = `<p class="check_user_name taken">
-                <span class="icon_wrapper_user_name wrong_icon"><i class="fa-solid fa-xmark"></i></span>
-                <span>user name</span>
-                <span>is already taken</span>
-            </p>`;
-        } else {
-            check_user_name[index].innerHTML = `<p class="check_user_name good_user_name">
-                <span class="icon_wrapper_user_name true_icon"><i class="fa-solid fa-check"></i></span>
-                <span>user name</span>
-                <span>is available</span>
-            </p>`;
-        }
+    user_name_input.forEach((input, index) => {
+        input.addEventListener('input', function () {
+            let values = input.value.replace(/ /g, "_").replace(" ", "_");
+            input.value = values;
+            if (values.length === 0) {
+                check_user_name[index].innerHTML = `<p class="check_user_name">
+                    <span class="icon_wrapper_user_name"><i class="fa-solid fa-pen"></i></span>
+                    <span>Write your user name</span>
+                </p>`;
+            } else if (usernamesList.includes(values.toLowerCase())) {
+                check_user_name[index].innerHTML = `<p class="check_user_name taken">
+                    <span class="icon_wrapper_user_name wrong_icon"><i class="fa-solid fa-xmark"></i></span>
+                    <span>User name is already taken</span>
+                </p>`;
+            } else {
+                check_user_name[index].innerHTML = `<p class="check_user_name good_user_name">
+                    <span class="icon_wrapper_user_name true_icon"><i class="fa-solid fa-check"></i></span>
+                    <span>User name is available</span>
+                </p>`;
+            }
+        });
     });
+}).catch(error => {
+    console.error("Failed to load usernames:", error);
 });
+
 
 pas_input.forEach((input, index) => {
     input.addEventListener("input", () => {
@@ -126,7 +133,7 @@ function check_form(button, ...fields) {
 function validateForm(button, ...args) {
     const allFilled = args.every(arg => arg.trim().length > 0);
     if (!allFilled) {
-        tempMessage(button, 'Formani toʻldiring', 2000);
+        tempMessage(button, 'Fill out the form', 2000);
         return;
     }
     check_form(button, ...args);
