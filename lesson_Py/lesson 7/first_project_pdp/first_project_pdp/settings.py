@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
+    "daphne",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -41,7 +42,12 @@ INSTALLED_APPS = [
     "account",
     "fontawesomefree",
     "rest_framework",
+    "channels",
 ]
+ASGI_APPLICATION = "first_project_pdp.asgi.application"
+
+CHANNEL_LAYERS = {"default": {"BACKEND": "channels.layers.InMemoryChannelLayer"}}
+
 
 CORS_ALLOW_ALL_ORIGINS = True
 MIDDLEWARE = [
