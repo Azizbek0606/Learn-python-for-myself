@@ -23,8 +23,10 @@ function form_tab_method() {
         btn_tab.textContent = "Login";
     }
 }
-const url = "http://172.20.10.3:322/api/users/";
 
+let protocol = window.location.protocol;
+let host = window.location.host;
+let url = `${protocol}//${host}/api/users/`;
 async function fetchUsernames(url) {
     try {
         const response = await fetch(url);
@@ -40,7 +42,6 @@ let usernamesList = [];
 
 fetchUsernames(url).then(usernames => {
     usernamesList = usernames.map(username => username.toLowerCase());
-    console.log(usernamesList);
 
     user_name_input.forEach((input, index) => {
         input.addEventListener('input', function () {
@@ -146,4 +147,3 @@ function tempMessage(element, message, duration) {
         element.value = originalText;
     }, duration);
 }
-

@@ -1,4 +1,5 @@
 {% extends "wrapper.html" %}
+{% load static %}
 {% block context_index %}
 <div class="container">
 
@@ -46,5 +47,6 @@
     {% endif %}
 
 </div>
+<script src="{% static 'index.js' %}"></script>
 {% endblock context_index %}
 <!--  -->

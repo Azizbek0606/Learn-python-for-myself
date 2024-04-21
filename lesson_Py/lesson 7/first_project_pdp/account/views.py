@@ -1,20 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate , logout
 from django.contrib import messages
 from django.db import IntegrityError
 
 
 def login_view(request):
-    # if request.method == "POST":
-    #     username = request.POST.get("username")
-    #     password = request.POST.get("password")
-    #     user = authenticate(username=username, password=password)
-    #     if user is not None:
-    #         login(request, user)
-    #         return redirect("/user/panel/")
-    #     else:
-    #         messages.error(request, "Wrong username or password")
     return render(request, "register/login.html")
 
 
@@ -57,3 +48,8 @@ def signup_method(request):
             return redirect("/login/user/login")
     else:
         return redirect("/login/user/login")
+
+
+def logout_method(request):
+    logout(request)
+    return redirect("/login/user/login")

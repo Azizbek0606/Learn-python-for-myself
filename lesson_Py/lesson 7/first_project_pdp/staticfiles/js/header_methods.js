@@ -1,5 +1,8 @@
-// search , tags and categories methods is beginning
-let url = ["http://172.20.10.3:322/api/category/", "http://172.20.10.3:322/api/tag/"]
+// tags and categories methods is beginning
+
+let protocol = window.location.protocol;
+let host = window.location.host;
+let url = [`${protocol}//${host}/api/category/`, `${protocol}//${host}/api/tag/`]
 
 function getCategory(html_element, into_url) {
     color_arr = ["#F38181", "#0F4C75", "#14FFEC", "#FCE38A"]
@@ -11,7 +14,7 @@ function getCategory(html_element, into_url) {
                 for (let i = 0; i < data.length; i++) {
                     let a = document.createElement('a');
                     a.textContent = data[i].name;
-                    a.href = `http://172.20.10.3:322/by/category/${data[i].id}`;
+                    a.href = `${protocol}//${host}/by/category/${data[i].id}`;
                     html_element.appendChild(a);
                 }
             } else {
@@ -31,7 +34,7 @@ function getCategory(html_element, into_url) {
                     main_block_tag.appendChild(a);
                     a.textContent = data[i].name;
                     a.style.color = color;
-                    a.href = `http://172.20.10.3:322/by/tags/${data[i].id}`;
+                    a.href = `${protocol}//${host}/by/tags/${data[i].id}`;
                     html_element.appendChild(main_block_tag);
                 }
             }
@@ -65,53 +68,8 @@ for (let i = 0; i < search_block.length; i++) {
         document.querySelector('.search_block').classList.toggle('active_search_block');
     });
 }
-// search , tags , categories menu methods was ended
+//  tags , categories menu methods was ended
 
-// show article author name is beginning
-let image_blocks = document.querySelectorAll('.image_block');
-for (let i = 0; i < image_blocks.length; i++) {
-    image_blocks[i].style.cssText = `background-image: url(${image_blocks[i].getAttribute("this_block_image")});
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;`
-};
-
-let card = document.querySelectorAll(".card");
-let author = document.querySelectorAll(".author");
-
-for (let i = 0; i < card.length; i++) {
-    card[i].addEventListener('mouseover', () => {
-        author[i].style.transform = "translate(5px)";
-    });
-    card[i].addEventListener('mouseout', () => {
-        author[i].style.transform = "";
-    });
-}
-// show article author name was ended 
-
-
-// go back buttons 
-let path = window.location.pathname;
-
-if (path != "/user/panel/") {
-    document.querySelector('.btn_for_back').style.display = "block";
-} else {
-    document.querySelector('.btn_for_back').style.display = "none";
-}
-// go back button method was ended
-
-
-// delete modal methods is beginning
-let delete_modal_btn = document.querySelectorAll('.delete_modal_btn');
-let delete_modal = document.querySelector(".delete_modal")
-let delete_article_url = document.querySelector('.delete_article_url');
-for (let i = 0; i < delete_modal_btn.length; i++) {
-    delete_modal_btn[i].addEventListener('click', () => {
-        delete_modal.classList.toggle('active_delete_modal')
-        delete_article_url.href = `${delete_modal_btn[i].getAttribute("article_id")}`
-    });
-}
-// delete modal methods was ended
 
 // search method is beginning
 let all_articles = [];
@@ -119,7 +77,7 @@ let isArticlesFetched = false;
 
 function get_articles_title() {
     if (!isArticlesFetched) {
-        fetch("http://172.20.10.3:322/api/article/")
+        fetch(`${protocol}//${host}/api/article/`)
             .then(response => response.json())
             .then(data => {
                 all_articles = data;
@@ -170,9 +128,3 @@ input.addEventListener('input', (e) => {
 });
 
 // search method was ended
-
-// comment from
-
-document.querySelector(".add_comment > h3").addEventListener('click', () => {
-    document.querySelector(".add_comment").classList.toggle('active_comment_block');
-});

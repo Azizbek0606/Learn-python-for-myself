@@ -1,3 +1,7 @@
+document.querySelector(".add_comment > h3").addEventListener('click', () => {
+    document.querySelector(".add_comment").classList.toggle('active_comment_block');
+});
+
 let subbtn = document.getElementById("subbtn");
 function limitInput() {
     const textarea = document.getElementById('comment');

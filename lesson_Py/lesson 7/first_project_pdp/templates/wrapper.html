@@ -29,11 +29,19 @@
                         <li><a href="{% url 'main_app:admin_panel' %}"><i class="fa-solid fa-user"></i> Admin Panel</a>
                         </li>
                         {% endif %}
+                        {% if request.user.is_authenticated %}
+                        <li>
+                            <a href="{% url 'account:logout' %}" onclick="confirm('Do you want to log out?')">
+                                <i class="fa-solid fa-sign-out-alt"></i> Logout
+                            </a>
+                        </li>
+                        {% else %}
                         <li>
                             <a href="{% url 'account:login_method' %}">
                                 <i class="fa-solid fa-sign-in-alt"></i> Login
                             </a>
                         </li>
+                        {% endif %}
                         <li class="category_btn"><i class="fa-solid fa-list"></i> Categories</li>
                         <li class="tags_btn logo_nav_block"><i class="fa-solid fa-circle"></i> Tags</li>
                         <li class="logo_nav_block search_btn_nav"><i class="fa-solid fa-magnifying-glass"></i> Search
@@ -44,23 +52,23 @@
         </div>
     </header>
     <div class="only_header" style="height: 100px;"></div>
-        {% if messages %}
-        {% for message in messages %}
-        <div class="message_{{ message.tags }} message">
-            <p>
-                {% if message.tags == "success" %}
-                <i class="fa-solid fa-circle-check"></i>
-                {% elif message.tags == "info" %}
-                <i class="fa-solid fa-circle-info"></i>
-                {% else %}
-                <i class="fa-solid fa-circle-exclamation"></i>
-                {% endif %}
-                {{ message }}
-            </p>
-            <button onclick="this.parentNode.style.display = 'none';"><i class="fa-solid fa-xmark-square"></i></button>
-        </div>
-        {% endfor %}
-        {% endif %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="message_{{ message.tags }} message">
+        <p>
+            {% if message.tags == "success" %}
+            <i class="fa-solid fa-circle-check"></i>
+            {% elif message.tags == "info" %}
+            <i class="fa-solid fa-circle-info"></i>
+            {% else %}
+            <i class="fa-solid fa-circle-exclamation"></i>
+            {% endif %}
+            {{ message }}
+        </p>
+        <button onclick="this.parentNode.style.display = 'none';"><i class="fa-solid fa-xmark-square"></i></button>
+    </div>
+    {% endfor %}
+    {% endif %}
 
     <div class="category_list">
         <div class="list_wrapper">
@@ -96,8 +104,7 @@
     <div class="btn_for_back"></div>
     {% block context_index %}
     {% endblock context_index %}
-    <script src="{% static 'js/app.js' %}"></script>
-    <script src="{% static 'js/comment_checker.js' %}"></script>
+    <script src="{% static 'js/header_methods.js' %}"></script>
 </body>
 
 </html>
