@@ -31,20 +31,21 @@
                         {% endif %}
                         {% if request.user.is_authenticated %}
                         <li>
-                            <a href="{% url 'account:logout' %}" onclick="confirm('Do you want to log out?')">
+                            <a href="{% url 'account:logout' %}" onclick="header_modal(confirm_block_for_logout)" >
                                 <i class="fa-solid fa-sign-out-alt"></i> Logout
                             </a>
                         </li>
                         {% else %}
                         <li>
-                            <a href="{% url 'account:login_method' %}">
+                            <a style="cursor: pointer;" href="{% url 'account:login_method' %}">
                                 <i class="fa-solid fa-sign-in-alt"></i> Login
                             </a>
                         </li>
                         {% endif %}
                         <li class="category_btn"><i class="fa-solid fa-list"></i> Categories</li>
                         <li class="tags_btn logo_nav_block"><i class="fa-solid fa-circle"></i> Tags</li>
-                        <li class="logo_nav_block search_btn_nav"><i class="fa-solid fa-magnifying-glass"></i> Search
+                        <li class="logo_nav_block search_btn_nav" onclick="header_modal(search_block)"><i
+                                class="fa-solid fa-magnifying-glass"></i> Search
                         </li>
                     </ul>
                 </div>
@@ -88,7 +89,7 @@
             </div>
         </div>
     </div>
-    <div class="search_block">
+    <div class="search_block" id="search_block">
         <div class="search_input_wrapper">
             <div>
                 <form action="{% url 'main_app:search' %}" method="get">
@@ -98,7 +99,25 @@
                 <div class="result_block">
                 </div>
             </div>
-            <div class="search_back_btn search_btn_nav"><i class="fa-solid fa-chevron-up"></i></div>
+            <div class="search_back_btn search_btn_nav" onclick="header_modal(search_block)"><i
+                    class="fa-solid fa-chevron-up"></i></div>
+        </div>
+    </div>
+    <div class="search_block" id="confirm_block_for_logout">
+        <div class="search_input_wrapper">
+            <div>
+                <div>
+                    <p>Are you sure you want to exit?
+                    </p>
+                </div>
+            </div>
+            <div style="width: 250px; display: flex; justify-content: space-between;">
+                <div class="search_back_btn search_btn_nav" style="width: 48% !important;"> <a
+                        href="{% url 'account:logout' %}"> Yes </a></div>
+                <div class="search_back_btn search_btn_nav" style="width: 48% !important;"
+                    onclick="header_modal(confirm_block_for_logout)"></i>No
+                </div>
+            </div>
         </div>
     </div>
     <div class="btn_for_back"></div>

@@ -62,11 +62,9 @@ let tags_list = document.querySelector('.tags_list');
 let tags_text_wrapper = document.querySelector('.tags_text_wrapper');
 get_category_tag(tag_btn, tags_list, tags_text_wrapper, url[1], "active_tags_list")
 
-let search_block = document.querySelectorAll('.search_btn_nav');
-for (let i = 0; i < search_block.length; i++) {
-    search_block[i].addEventListener('click', () => {
-        document.querySelector('.search_block').classList.toggle('active_search_block');
-    });
+
+function header_modal(html_element) {
+    html_element.classList.toggle('active_search_block');
 }
 //  tags , categories menu methods was ended
 
@@ -128,3 +126,4 @@ input.addEventListener('input', (e) => {
 });
 
 // search method was ended
+
