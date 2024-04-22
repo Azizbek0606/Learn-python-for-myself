@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
+from .models import Message 
 
 
-def chatPage(request, *args, **kwargs):
+def chatPage(request):
     if not request.user.is_authenticated:
         return redirect("/login/user/login")
-    context = {}
+    messages = Message.objects.all()
+    context = {"messages": messages}
     return render(request, "chat/chat_page.html", context)

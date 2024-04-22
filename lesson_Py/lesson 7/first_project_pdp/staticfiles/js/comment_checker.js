@@ -2,12 +2,8 @@ document.querySelector(".add_comment > h3").addEventListener('click', () => {
     document.querySelector(".add_comment").classList.toggle('active_comment_block');
 });
 
-let subbtn = document.getElementById("subbtn");
-function limitInput() {
-    const textarea = document.getElementById('comment');
+function limitInput(subbtn, textarea, letterIndicator, wordsIndicator) {
     let text = textarea.value;
-    const letterIndicator = document.getElementById('letter_inducator');
-    const wordsIndicator = document.getElementById('words_inducator');
     subbtn.disabled = text.length === 0;
     let lastWord = text.split(' ').pop();
     let maxLength = 25;

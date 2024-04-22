@@ -56,7 +56,7 @@
         <div class="add_comment">
             <h3><i class="fa-solid fa-comment"></i> Add your comment</h3>
             <form action="{% url 'main_app:add_comment' article.id %}" method="post" class="comment_form">
-                <input type="text" placeholder="Write your comment" name="comment" id="comment" maxlength="250" oninput="limitInput()">
+                <input type="text" placeholder="Write your comment" name="comment" id="comment" maxlength="250" oninput="limitInput(subbtn,comment,letter_inducator,words_inducator)">
                 <input type="submit" onClick="this.form.submit(); this.disabled=true; this.value='Sending…'; " id="subbtn">
                 {% csrf_token %}
             </form>

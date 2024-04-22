@@ -1,49 +1,102 @@
 <!DOCTYPE html>
-<html>
-  <body>
-    <center><h1>Hello , Welcome to my chat site ! {{request.user}}</h1></center>
-    <br>
-    {% if request.user.is_authenticated  %}
-    <center> Logout the chat Page <a href = "{% url 'account:logout' %}">Logout</a></center>
-    {% endif %}
-    <div
-      class="chat__item__container"
-      id="id_chat_item_container"
-      style="font-size: 20px"
-    >
-      <br />
-      <input type="text" id="id_message_send_input" />
-      <button type="submit" id="id_message_send_button">Send Message</button>
-      <br />
-      <br />
-    </div>
-<script>
-    const chatSocket = new WebSocket("ws://" + window.location.host + "/");
-    chatSocket.onopen = function (e) {
-        console.log("The connection was setup successfully !");
-    };
-    chatSocket.onclose = function (e) {
-        console.log("Something unexpected happened !");
-    };
-    document.querySelector("#id_message_send_input").focus();
-    document.querySelector("#id_message_send_input").onkeyup = function (e) {
-        if (e.keyCode === 13) {  // Enter bosilganda
-            document.querySelector("#id_message_send_button").click();
-        }
-    };
-    document.querySelector("#id_message_send_button").onclick = function (e) {
-        var messageInput = document.querySelector("#id_message_send_input").value;
-        chatSocket.send(JSON.stringify({ message: messageInput, username: "{{request.user.username}}" }));
-        document.querySelector("#id_message_send_input").value = "";  // Habar yuborilgach inputni tozalash
-    };
-    chatSocket.onmessage = function (e) {
-        const data = JSON.parse(e.data);
-        var div = document.createElement("div");
-        div.innerHTML = data.username + ": " + data.message;
-        document.querySelector("#id_chat_item_container").appendChild(div);
-        // Bu qism olib tashlandi: document.querySelector("#id_message_send_input").value = "";
-    };
-</script>
+{% load static %}
 
-  </body>
-</html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/message.css' %}">
+    <link rel="stylesheet" href="{% static 'css/chat_style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>First lesson</title>
+</head>
+<html>
+
+<body>
+
+    <div class="header_for_chat">
+        <div class="container">
+            <div class="logo_nav_block">
+                <i class="fa-solid fa-earth-americas"></i>
+                Blog
+            </div>
+            <div class="admin_header_context_wrapper">
+                <ul>
+                    <li class="logo_nav_block admin_header_context btn_for_back">
+                        <a href="/">
+                            <i class="fa-solid fa-arrow-left"></i>
+                            Home Page
+                        </a>
+                    </li>
+                    <li class="logo_nav_block admin_header_context btn_for_logout">
+                        <a href="{% url 'account:logout' %}">
+                            <i class="fa-solid fa-sign-out"></i>
+                            logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="chat_setting_wrapper">
+        <div class="chat_wrapper">
+            <div class="main_wrapper_chat_context">
+                <div id="id_chat_item_container">
+                    {% for message in messages %}
+                    <div>{{ message.user.username }}: {{ message.message }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="input_wrapper_to_chat">
+                <div>
+                    <input type="text" id="id_message_send_input"  placeholder="wrire your message" oninput="limitInput(id_message_send_button,id_message_send_input,letter_inducator,words_inducator)" />
+                    <input type="submit" id="id_message_send_button" disabled />
+                </div>
+                <div class="comment_info">
+                    <div id="letter_inducator">
+                        max letter 25 / 0
+                    </div>
+                    <div id="words_inducator">
+                        max word 250 / 0
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="chat_setting"></div>
+    </div>
+
+
+
+
+
+    <script>
+        const chatSocket = new WebSocket("ws://" + window.location.host + "/");
+        chatSocket.onopen = function (e) {
+            console.log("The connection was setup successfully!");
+        };
+        chatSocket.onclose = function (e) {
+            console.log("Something unexpected happened!");
+        };
+        document.querySelector("#id_message_send_input").focus();
+        document.querySelector("#id_message_send_input").onkeyup = function (e) {
+            if (e.keyCode === 13) {
+                document.querySelector("#id_message_send_button").click();
+            }
+        };
+        document.querySelector("#id_message_send_button").onclick = function (e) {
+            let messageInput = document.querySelector("#id_message_send_input").value;
+            chatSocket.send(JSON.stringify({ message: messageInput, username: "{{ request.user.username }}" }));
+            document.querySelector("#id_message_send_input").value = "";
+        };
+        chatSocket.onmessage = function (e) {
+            const data = JSON.parse(e.data);
+            let div = document.createElement("div");
+            div.innerHTML = data.username + ": " + data.message;
+            document.querySelector("#id_chat_item_container").appendChild(div);
+        };
+    </script>
+    <script src="{% static 'js/comment_checker.js' %}"></script>
+</body>

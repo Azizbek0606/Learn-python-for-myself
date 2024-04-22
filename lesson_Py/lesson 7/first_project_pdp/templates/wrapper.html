@@ -31,7 +31,7 @@
                         {% endif %}
                         {% if request.user.is_authenticated %}
                         <li>
-                            <a href="{% url 'account:logout' %}" onclick="header_modal(confirm_block_for_logout)" >
+                            <a onclick="header_modal(confirm_block_for_logout)">
                                 <i class="fa-solid fa-sign-out-alt"></i> Logout
                             </a>
                         </li>
@@ -41,6 +41,10 @@
                                 <i class="fa-solid fa-sign-in-alt"></i> Login
                             </a>
                         </li>
+                        {% endif %}
+                        {% if request.user.is_authenticated %}
+                        <li class="category_btn"><a href="{% url 'chat:chat_page' %}"><i
+                                    class="fa-solid fa-comments"></i> Chat</a></li>
                         {% endif %}
                         <li class="category_btn"><i class="fa-solid fa-list"></i> Categories</li>
                         <li class="tags_btn logo_nav_block"><i class="fa-solid fa-circle"></i> Tags</li>

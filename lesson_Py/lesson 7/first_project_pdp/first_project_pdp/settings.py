@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "fontawesomefree",
     "rest_framework",
     "channels",
+    "chat"
 ]
 ASGI_APPLICATION = "first_project_pdp.asgi.application"
 
