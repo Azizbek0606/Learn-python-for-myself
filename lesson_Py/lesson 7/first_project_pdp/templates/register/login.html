@@ -40,19 +40,20 @@
         <div class="login_wrapper">
             <h1 style="position: absolute; top: 10px; right: 10px;">Login</h1>
             <form action="{% url 'account:login' %}" method="POST">
+                {% csrf_token %}
                 <div>
                     <p>user name</p>
                     <br>
                     <input type="text" name="username" class="user_name_input" id="user_name" minlength="6" required
-                        maxlength="20">
+                    maxlength="20">
                     <p class="check_user_name"><span class="icon_wrapper_user_name"><i
-                                class="fa-solid fa-pen"></i></span><span>Write your user name</span></p>
+                        class="fa-solid fa-pen"></i></span><span>Write your user name</span></p>
                 </div>
                 <div>
                     <p>Password</p>
                     <br>
                     <input type="password" name="password" id="password" required minlength="5" maxlength="30"
-                        class="pas_input">
+                    class="pas_input">
                     <div class="progress_to_password" style="opacity: 0;">
                         <p class="progress_vizualization"></p>
                     </div>
@@ -64,9 +65,6 @@
                     <input type="button" onclick="validateForm(this, user_name.value, password.value)" value="Submit"
                         class="login_sub_btn">
                 </div>
-
-
-                {% csrf_token %}
             </form>
         </div>
         <div class="sign_up" style="display: none;">
