@@ -31,7 +31,7 @@
                         {% endif %}
                         {% if request.user.is_authenticated %}
                         <li>
-                            <a onclick="header_modal(confirm_block_for_logout)">
+                            <a onclick="header_modal(confirm_block_for_logout)" style="cursor:pointer;">
                                 <i class="fa-solid fa-sign-out-alt"></i> Logout
                             </a>
                         </li>
@@ -42,16 +42,25 @@
                             </a>
                         </li>
                         {% endif %}
-                        {% if request.user.is_authenticated %}
-                        <li class="category_btn"><a href="{% url 'chat:chat_page' %}"><i
+                        <!-- {% comment %} {% if request.user.is_authenticated %}
+                        <li class="logo_nav_block"><a href="{% url 'chat:chat_page' %}"><i
                                     class="fa-solid fa-comments"></i> Chat</a></li>
-                        {% endif %}
+                        {% endif %} {% endcomment %} -->
                         <li class="category_btn"><i class="fa-solid fa-list"></i> Categories</li>
                         <li class="tags_btn logo_nav_block"><i class="fa-solid fa-circle"></i> Tags</li>
                         <li class="logo_nav_block search_btn_nav" onclick="header_modal(search_block)"><i
                                 class="fa-solid fa-magnifying-glass"></i> Search
                         </li>
                     </ul>
+                </div>
+                <div class="account">
+                    <div class="image_for_account">
+
+                    </div>
+                    {% if request.user.is_authenticated %}
+                        <a href="{% url 'account:profile' %}">{{ request.user }}</a>
+                    {% endif %}
+
                 </div>
             </div>
         </div>

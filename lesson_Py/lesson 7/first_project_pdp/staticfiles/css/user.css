@@ -1,0 +1,160 @@
+.header{
+    width: 100%;
+    height: 190px;
+}
+body{
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(45deg , #000520 , #001728 );
+}
+.header_wrapper{
+    width: 1200px;
+    height: 100%;
+    border-bottom: 1px solid #fff;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0px 5px 0px;
+}
+.information_block{
+    width: 350px;
+    height: 100%;
+}
+.information_block ul{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.bio{
+    width: 100%;
+    height: 80px;
+    padding: 5px;
+    border-radius: 5px;
+    overflow-y: auto;
+    background: linear-gradient(to right , #000309 , #0c0014);
+}
+.image_blog_count{
+    width: 350px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 10px;
+    background: linear-gradient(to right , #000309 , #0c0014);
+}
+.image_count , 
+.blog_count{
+    width: 90%;
+    height: 50%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    align-items: center;
+}
+.blog_count{
+    border: none;
+}
+.user_image{
+    width: 250px;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+.image_wrapper_user{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+}
+.users_blog_image{
+    width: 100%;
+    height: 470px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    background: linear-gradient(45deg , #58585895, #0000001d , #00000066);
+    overflow: hidden;
+}
+.users_blog_image_header{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.tab_btn_wrapper{
+    width: 350px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    border-bottom-right-radius: 10px;
+    position: relative;
+    background: linear-gradient(to left , #000309 , #0c0014);
+}
+.tab_btn_wrapper::before{
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 80%;
+    left: 50%;
+    background-color: white;
+}
+.tab_btn_wrapper div{
+    width: 50%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+}
+.add_something_btn{
+    width: 550px;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+    background: linear-gradient(to right , #000309 , #0c0014);
+    border-bottom-left-radius: 10px;
+}
+.add_something_btn > div{
+    width: 33.33%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    border-right: 2px solid white;
+    cursor: pointer;
+}
+.add_something_btn > div:last-child{
+    border: none;
+}
+.blog_image_card_wrapper{
+    width: 95%;
+    height: 80%;
+    margin: 30px auto;
+    background: linear-gradient(to left , #000309 , #0c0014);
+    border-radius: 20px;
+}
+.wrapper{
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    overflow: hidden;
+    overflow-x: auto;
+}
+
+.user_card{
+    flex-shrink: 0; 
+    width: 350px !important;
+    height: 100%;
+    border-radius: 10px;
+    border: 1px solid white;
+}

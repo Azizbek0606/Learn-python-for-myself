@@ -53,3 +53,6 @@ def signup_method(request):
 def logout_method(request):
     logout(request)
     return redirect("/login/user/login")
+
+def profile_view(request):
+    return render(request, "user/user_panel.html")

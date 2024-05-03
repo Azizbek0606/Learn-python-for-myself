@@ -105,25 +105,35 @@
 # calc1 = Calculate(num1 , num2)
 # print(calc1.plus())
 
-import math
+# import math
 
-class GetArea:
-    def __init__(self , x , y , z):
+# class GetArea:
+#     def __init__(self , x , y , z):
+#         self.x = x
+#         self.y = y
+#         self.z = z
+
+#     def area(self):
+#         return self.x + self.y + self.z
+#     def yuza(self):
+#         half_area = int(self.area()) / 2
+#         return math.sqrt(
+#             half_area
+#             * (half_area - self.x)
+#             * (half_area - self.y)
+#             * (half_area - self.z)
+#         )
+
+# triangle = GetArea(12,12,6)
+# print(triangle.yuza())
+# print(triangle.area())
+class Polimarfizm:
+    def __init__(self , x , y):
         self.x = x
         self.y = y
-        self.z = z
-
     def area(self):
-        return self.x + self.y + self.z
-    def yuza(self):
-        half_area = int(self.area()) / 2
-        return math.sqrt(
-            half_area
-            * (half_area - self.x)
-            * (half_area - self.y)
-            * (half_area - self.z)
-        )
-
-triangle = GetArea(12,12,6)
-print(triangle.yuza())
-print(triangle.area())
+        return self.x * self.y
+    def perimeter(self):
+        return 2 * (self.x + self.y)
+    
+class Circle(Polimarfizm)

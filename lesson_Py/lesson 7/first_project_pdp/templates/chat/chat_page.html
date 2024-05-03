@@ -52,8 +52,10 @@
             </div>
             <div class="input_wrapper_to_chat">
                 <div>
-                    <input type="text" id="id_message_send_input"  placeholder="wrire your message" oninput="limitInput(id_message_send_button,id_message_send_input,letter_inducator,words_inducator)" />
-                    <input type="submit" id="id_message_send_button" disabled />
+                    <input type="text" id="id_message_send_input" placeholder="wrire your message"
+                        oninput="limitInput(id_message_send_button,id_message_send_input,letter_inducator,words_inducator)" />
+                    <input type="submit" id="id_message_send_button" onclick="sendMessage(id_message_send_input)"
+                        disabled />
                 </div>
                 <div class="comment_info">
                     <div id="letter_inducator">
@@ -77,9 +79,6 @@
         chatSocket.onopen = function (e) {
             console.log("The connection was setup successfully!");
         };
-        chatSocket.onclose = function (e) {
-            console.log("Something unexpected happened!");
-        };
         document.querySelector("#id_message_send_input").focus();
         document.querySelector("#id_message_send_input").onkeyup = function (e) {
             if (e.keyCode === 13) {
@@ -91,6 +90,9 @@
             chatSocket.send(JSON.stringify({ message: messageInput, username: "{{ request.user.username }}" }));
             document.querySelector("#id_message_send_input").value = "";
         };
+        chatSocket.onclose = function (e) {
+            console.log("Something unexpected happened!");
+        };
         chatSocket.onmessage = function (e) {
             const data = JSON.parse(e.data);
             let div = document.createElement("div");
@@ -99,4 +101,5 @@
         };
     </script>
     <script src="{% static 'js/comment_checker.js' %}"></script>
+    <script src="{% static 'js/chat_app.js' %}"></script>
 </body>

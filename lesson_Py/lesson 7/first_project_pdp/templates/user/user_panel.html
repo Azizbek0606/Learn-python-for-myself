@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/user.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>User panel</title>
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="header_wrapper">
+            <div class="information_block">
+                <ul>
+                    <li>
+                        <h1>User_name</h1>
+                    </li>
+                    <li>Birthday</li>
+                    <li class="bio">Bio Lorem ipsum dolor sit</li>
+                </ul>
+            </div>
+            <div class="image_blog_count">
+                <div class="image_count">
+                    <p>Image</p>
+                    <p>0</p>
+                </div>
+                <div class="blog_count">
+                    <p>Article</p>
+                    <p>0</p>
+                </div>
+            </div>
+            <div class="user_image">
+                <div class="image_wrapper_user"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style="margin-top: 20px;">
+        <div class="users_blog_image">
+            <div class="users_blog_image_header">
+                <div class="tab_btn_wrapper">
+                    <div onclick="tab_method_to_user_interface(article_tab , image_tab , this , second)" id="first"
+                        style="font-size: 2em">
+                        Image
+                    </div>
+                    <div onclick="tab_method_to_user_interface(image_tab , article_tab , this , first)" id="second">
+                        Article
+                    </div>
+                </div>
+                <div class="add_something_btn">
+                    <div>
+                        <div>
+                            <i class="fa-solid fa-circle-plus"></i>
+                            Add Article
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <i class="fa-solid fa-circle-plus"></i>
+                            Add Image
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <i class="fa-solid fa-pen"></i>
+                            Update profile
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="blog_image_card_wrapper" id="article_tab" style="display: none;">
+                <div class="wrapper">
+                    <div class="user_card"></div>
+                    <div class="user_card"></div>
+                    <div class="user_card"></div>
+                    <div class="user_card"></div>
+                    <div class="user_card"></div>
+                    <div class="user_card"></div>
+                    <div class="user_card"></div>
+                    <div class="user_card"></div>
+                    <div class="user_card"></div>
+                    <div class="user_card"></div>
+                    <div class="user_card"></div>
+                    <div class="user_card"></div>
+                    <div class="user_card"></div>
+                    <div class="user_card"></div>
+                    <div class="user_card"></div>
+                    <div class="user_card"></div>
+                    <div class="user_card"></div>
+                    <div class="user_card"></div>
+                    <div class="user_card"></div>
+                </div>
+            </div>
+            <div class="blog_image_card_wrapper image_card_wrapper" id="image_tab">
+                <div class="wrapper">
+                    <div class="user_card">image</div>
+                    <div class="user_card">image</div>
+                    <div class="user_card">image</div>
+                    <div class="user_card">image</div>
+                    <div class="user_card">image</div>
+                    <div class="user_card">image</div>
+                    <div class="user_card">image</div>
+                    <div class="user_card">image</div>
+                    <div class="user_card">image</div>
+                    <div class="user_card">image</div>
+                    <div class="user_card">image</div>
+                    <div class="user_card">image</div>
+                    <div class="user_card">image</div>
+                    <div class="user_card">image</div>
+                    <div class="user_card">image</div>
+                    <div class="user_card">image</div>
+                    <div class="user_card">image</div>
+                    <div class="user_card">image</div>
+                    <div class="user_card">image</div>
+                    <div class="user_card">image</div>
+                    <div class="user_card">image</div>
+                    <div class="user_card">image</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'js/user_interface.js' %}"></script>
+</body>
+
+</html>

@@ -139,7 +139,7 @@
   background: linear-gradient(90deg, #722c2c45 50%, #06333ba1 50%);
 }
 .article_author {
-  width: 80px;
+  width: auto;
   height: 30px;
   border: 1px solid #2c667266;
   background: #2c667266;
