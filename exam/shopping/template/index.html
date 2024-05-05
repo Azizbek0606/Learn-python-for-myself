@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <section> 
+            <header>
+                <div class="logo">
+                    <h1>
+                        <a href="/">
+                            Logo
+                        </a>
+                    </h1>
+                </div>
+                <div class="header_context">
+                    <nav>
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/">About</a></li>
+                            <li><a href="/">Contact</a></li>
+                        </ul>
+                    </nav>
+                    <div class="search">
+                        <form action="">
+                            <input type="text" placeholder="Search...">
+                            <button type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </header>
+        </section>
+    </div>
+</body>
+</html>
