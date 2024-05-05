@@ -1,40 +1,135 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>Document</title>
 </head>
+
 <body>
-    <div class="container">
-        <section> 
-            <header>
-                <div class="logo">
-                    <h1>
-                        <a href="/">
-                            Logo
-                        </a>
-                    </h1>
-                </div>
-                <div class="header_context">
+    <div class="for_image">
+        <div class="container">
+            <section {% if request.path != "/" %} style="height: 100px;" {% endif %}>
+                <header>
                     <nav>
-                        <ul>
-                            <li><a href="/">Home</a></li>
-                            <li><a href="/">About</a></li>
-                            <li><a href="/">Contact</a></li>
-                        </ul>
-                    </nav>
-                    <div class="search">
-                        <form action="">
-                            <input type="text" placeholder="Search...">
-                            <button type="submit">Search</button>
+                        <div class="logo">
+                            <h1>
+                                <a href="/">
+                                    Logo
+                                </a>
+                            </h1>
+                        </div>
+                        <div class="header_context">
+                            <ul>
+                                <li><a href="/">Home</a></li>
+                                <li><a href="/">About</a></li>
+                                {% if request.user.is_superuser %}
+                                <li><a href="http://127.0.0.1:8000/if/you/admin/">Admin panel</a></li>
+                                {% endif %}
+                                <li><a href="/">Products</a></li>
+                            </ul>
+                        </div>
+                        <form action="{% url 'main_app:filter' %}" method="get">
+                            <select name="filter_by_category" class="filter_select" onchange="this.form.submit();">
+                                <option selected disabled>Filter by category</option>
+                                {% for i in category %}
+                                <option value="{{i.id}}">{{i.name}}</option>
+                                {% endfor %}
+                            </select>
                         </form>
+                    </nav>
+                </header>
+                <div class="banner" {% if request.path != "/" %} style="display: none;" {% endif %}>
+                    <div>
+                        <div class="title">
+                            <h1>
+                                Discover Unbeatable Deals
+                            </h1>
+                        </div>
+                        <div class="subtile">
+                            <p>Explore Top Products with Exclusive Discounts!</p>
+                        </div>
+                    </div>
+                    <div class="triple">
+                        <div class="banner_info_box">
+                            <p>
+                                Join Our Thriving Community
+                            </p>
+                            <h1>
+                                Over 500,000 Happy Customers and Counting!
+                            </h1>
+                        </div>
+                        <div class="banner_double_box_wrapper">
+                            <div class="banner_info_box_double">
+                                <p>
+                                    Products
+                                </p>
+                                <br>
+                                <h1>
+                                    70.000 +
+                                </h1>
+                            </div>
+                            <div class="banner_info_box_double for_color">
+                                <p>
+                                    Delivers
+                                </p>
+                                <br>
+                                <h1>
+                                    3.500 +
+                                </h1>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </header>
-        </section>
+            </section>
+            {% if products %}
+            <div class="product_card_wrapper">
+                {% for i in products %}
+                <div class="card">
+                    <div class="image">
+                        <img src="{{ i.image.url }}" alt="" width="100%" height="100%">
+                    </div>
+                    <div class="info">
+                        <div class="product_title">
+                            <h3>
+                                {{ i.name}}
+                            </h3>
+                        </div>
+                        <div class="product_description">
+                            <p>
+                                {{ i.description}}
+                            </p>
+                        </div>
+                        <div class="product_price">
+                            <h1>
+                                {{ i.price}} $
+                            </h1>
+                        </div>
+                        <div class="product_button">
+                            <button>
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <center style="margin-top: 170px;">
+                <h1>
+                    No products in this category
+                </h1>
+                <br>
+                <a href="/">
+                    click to main page
+                </a>
+            </center>
+            {% endif %}
+        </div>
     </div>
 </body>
+
 </html>
