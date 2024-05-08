@@ -1,0 +1,73 @@
+@font-face {
+    font-family: "ROBOTO";
+    src: url('../fonts/roboto.ttf');
+}
+:root{
+    /* colors */
+    --dark_blue:#0d1b2a;
+    --light_blur:#002742;
+    --dark:#171717;
+    --secondary:#8c8c8c;
+    --white:#fff;
+    --black:#000;
+
+    /* opacity color */
+
+    --dark_opacity:#17171790;
+    --dark_blue_opacity:#0d1b2a90;
+    --light_blur_opacity:#00274290;
+    --secondary_opacity:#8c8c8c90;
+
+    /* distance */
+
+    --large-distance: 50px; 
+    --medium-distance: 30px;
+    --small-distance: 15px;
+    --x-small-distance: 10px;
+    --xx-small-distance: 5px;
+
+    /* gradients */
+
+    --card_gradient:linear-gradient(80deg, rgba(27, 27, 27, 0.866), rgba(0, 0, 0, 0.411));
+    --bg_gradient:linear-gradient(50deg, rgb(0, 2, 3) 0%, rgb(8, 14, 14) 67%);
+    --blue_gradient:linear-gradient(80deg, rgba(2,11,24,1) 0%, rgba(0,28,41,1) 67%);
+
+    /* gradients */
+
+    --card_shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    --blue_shadow: 0 0 10px rgba(7, 31, 59, 0.503);
+
+    /* font sizes */
+
+    --large_font_size: 1.5em;
+    --medium_font_size: 1.1em;
+    --small_font_size: 0.9em;
+    --x_small_font_size: 0.7em;
+    
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "ROBOTO";
+    list-style: none;
+    text-decoration: none;
+}
+p{
+    font-size: var(--medium_font_size);
+}
+body{
+    background: var(--bg_gradient);
+    min-height: 100vh;
+}
+
+.box{
+    width: 300px;
+    height: 300px;
+    background: var(--card_gradient);
+    box-shadow: var(--card_shadow);
+    font-size:  ;
+    border-radius: 10px;
+    margin: var(--medium-distance) auto;
+    padding: var(--medium-distance);
+}
