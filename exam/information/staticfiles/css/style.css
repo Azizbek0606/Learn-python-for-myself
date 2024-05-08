@@ -2,21 +2,32 @@
     font-family: "ROBOTO";
     src: url('../fonts/roboto.ttf');
 }
+
+/* : To’q ko’k
+#003A5D: Okean ko’k
+#1C1C1C: Qorong’i kulrang
+#5D5D5D: Kulrang
+#FFFFFF: Oq
+#000000: Qora
+#FF5733: Yorqin qizil
+#FFC300: Oltin sariq
+#DAF7A6: Pastel yashil
+#900C3F: To’q qizil */
 :root{
     /* colors */
     --dark_blue:#0d1b2a;
-    --light_blur:#002742;
+    --light_blur:#003A5D;
     --dark:#171717;
-    --secondary:#8c8c8c;
+    --secondary:#4d4d4d;
     --white:#fff;
     --black:#000;
 
     /* opacity color */
 
-    --dark_opacity:#17171790;
-    --dark_blue_opacity:#0d1b2a90;
-    --light_blur_opacity:#00274290;
-    --secondary_opacity:#8c8c8c90;
+    --dark_opacity:#1717175a;
+    --dark_blue_opacity:#0d1b2a5a;
+    --light_blur_opacity:#0027425a;
+    --secondary_opacity:#4d4d4d5a;
 
     /* distance */
 
@@ -66,8 +77,13 @@ body{
     height: 300px;
     background: var(--card_gradient);
     box-shadow: var(--card_shadow);
-    font-size:  ;
+    font-size: var(--medium_font_size); ;
     border-radius: 10px;
+    border: 1px solid var(--secondary_opacity);
+    color: var(--white);
     margin: var(--medium-distance) auto;
     padding: var(--medium-distance);
+}
+h1{
+    color: var(--secondary);
 }
