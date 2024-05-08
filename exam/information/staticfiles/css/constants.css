@@ -1,0 +1,48 @@
+@font-face {
+    font-family: "ROBOTO";
+    src: url('../fonts/roboto.ttf');
+}
+:root{
+    /* colors */
+    --dark_blue:#0d1b2a;
+    --light_blue:#003A5D;
+    --dark:#171717;
+    --secondary:#4d4d4d;
+    --white:#fff;
+    --black:#000;
+
+    /* opacity color */
+
+    --dark_opacity:#1717175a;
+    --dark_blue_opacity:#0d1b2abe;
+    --light_blur_opacity:#0027425a;
+    --secondary_opacity:#4d4d4d5a;
+
+    /* distance */
+
+    --large-distance: 50px; 
+    --medium-distance: 30px;
+    --small-distance: 15px;
+    --x-small-distance: 10px;
+    --xx-small-distance: 5px;
+
+    /* gradients */
+
+    --card_gradient:linear-gradient(80deg, rgba(27, 27, 27, 0.866), rgba(0, 0, 0, 0.411));
+    --bg_gradient:linear-gradient(50deg, rgb(0, 2, 3) 0%, rgb(15, 27, 27) 67%);
+    --blue_gradient:linear-gradient(80deg, rgba(2,11,24,1) 0%, rgba(0,28,41,1) 67%);
+
+    /* shadows */
+
+    --card_shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    --blue_shadow: 0 0 10px rgba(7, 31, 59, 0.503);
+    --light_shadow: 0 0 10px rgba(255,255,255,0.7);
+
+    /* font sizes */
+
+    --large_font_size: 1.5em;
+    --medium_font_size: 1.1em;
+    --small_font_size: 0.9em;
+    --x_small_font_size: 0.7em;
+    
+}

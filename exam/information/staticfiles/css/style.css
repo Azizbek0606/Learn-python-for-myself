@@ -1,61 +1,4 @@
-@font-face {
-    font-family: "ROBOTO";
-    src: url('../fonts/roboto.ttf');
-}
-
-/* : To’q ko’k
-#003A5D: Okean ko’k
-#1C1C1C: Qorong’i kulrang
-#5D5D5D: Kulrang
-#FFFFFF: Oq
-#000000: Qora
-#FF5733: Yorqin qizil
-#FFC300: Oltin sariq
-#DAF7A6: Pastel yashil
-#900C3F: To’q qizil */
-:root{
-    /* colors */
-    --dark_blue:#0d1b2a;
-    --light_blur:#003A5D;
-    --dark:#171717;
-    --secondary:#4d4d4d;
-    --white:#fff;
-    --black:#000;
-
-    /* opacity color */
-
-    --dark_opacity:#1717175a;
-    --dark_blue_opacity:#0d1b2a5a;
-    --light_blur_opacity:#0027425a;
-    --secondary_opacity:#4d4d4d5a;
-
-    /* distance */
-
-    --large-distance: 50px; 
-    --medium-distance: 30px;
-    --small-distance: 15px;
-    --x-small-distance: 10px;
-    --xx-small-distance: 5px;
-
-    /* gradients */
-
-    --card_gradient:linear-gradient(80deg, rgba(27, 27, 27, 0.866), rgba(0, 0, 0, 0.411));
-    --bg_gradient:linear-gradient(50deg, rgb(0, 2, 3) 0%, rgb(8, 14, 14) 67%);
-    --blue_gradient:linear-gradient(80deg, rgba(2,11,24,1) 0%, rgba(0,28,41,1) 67%);
-
-    /* gradients */
-
-    --card_shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    --blue_shadow: 0 0 10px rgba(7, 31, 59, 0.503);
-
-    /* font sizes */
-
-    --large_font_size: 1.5em;
-    --medium_font_size: 1.1em;
-    --small_font_size: 0.9em;
-    --x_small_font_size: 0.7em;
-    
-}
+@import url(./constants.css);
 *{
     margin: 0;
     padding: 0;
@@ -63,27 +6,103 @@
     font-family: "ROBOTO";
     list-style: none;
     text-decoration: none;
-}
-p{
-    font-size: var(--medium_font_size);
+    color: var(--white);
+    transition: all 0.3s;
 }
 body{
     background: var(--bg_gradient);
+    background-repeat: no-repeat;
     min-height: 100vh;
+    position: relative;
 }
-
-.box{
-    width: 300px;
-    height: 300px;
-    background: var(--card_gradient);
-    box-shadow: var(--card_shadow);
-    font-size: var(--medium_font_size); ;
-    border-radius: 10px;
-    border: 1px solid var(--secondary_opacity);
-    color: var(--white);
-    margin: var(--medium-distance) auto;
-    padding: var(--medium-distance);
+.container{
+    max-width: 1200px;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
 }
-h1{
-    color: var(--secondary);
+section{
+    width: 100%;
+    height: auto;
+    padding: var(--large-distance) 0;
+}
+header{
+    max-width: 1200px;
+    width: 100%;
+    height: 100px;
+    background: var(--dark_blue_opacity);
+    border: 2px solid var(--dark_blue);
+    position: fixed;
+    border-radius: 20px;
+    backdrop-filter: blur(var(--xx-small-distance));
+    margin: 0px auto;
+}
+nav{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px var(--medium-distance);
+    transition: 0.3s;
+}
+.logo{
+    width: 100px;
+    height: 70px;
+}
+.logo img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.nav_context_wrapper ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--large-distance);
+}
+.nav_btn{
+    border: 1px solid var(--white);
+    padding: 10px 20px;
+    border-radius: var(--small_font_size);
+    cursor: pointer;
+    display: none;
+}
+.btn_in_nav{
+    position: absolute;
+    top: var(--xx-small-distance);
+    right: var(--xx-small-distance);
+    font-size: var(--large_font_size);
+    padding: 3px 10px;
+    border-radius: var(--x-small-distance);
+}
+.nav_context_wrapper a{
+    position: relative;
+}
+.nav_context_wrapper a::before{
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 3px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--light_blue);
+    transition: 0.3s;
+}
+.nav_context_wrapper a:hover::before{
+    width: 100%;
+}
+.banner_image{
+    width: 100%;
+    height: 100vh;
+}
+.bg_decoration_dot{
+    width: 350px;
+    height: 350px;
+    background-color: var(--dark_blue_opacity);
+    filter: blur(100px);
+    position: fixed;
+    top: -100px;
+    left: -100px;
+    z-index: -1;
 }

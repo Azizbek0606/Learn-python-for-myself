@@ -11,40 +11,65 @@
 </head>
 
 <body>
+    <div class="bg_decoration_dot"></div>
     <div class="container">
-        <header>
-            <nav>
-                <div class="logo"></div>
-                <div class="nav_context_wrapper">
-                    <ul>
-                        <li>
-                            <a href="/">Home</a>
-                        </li>
-                        <li>
-                            <a href="/">Our Team</a>
-                        </li>
-                        <li>
-                            <a href="/">About</a>
-                        </li>
-                        <li>
-                            <a href="/">Contact</a>
-                        </li>
-                    </ul>
+        <section>
+            <header>
+                <nav>
+                    <div class="logo">
+                        <a href="/">
+                            <img src="../media/header/logo.png" alt="">
+                        </a>
+                    </div>
+                    <div class="nav_context_wrapper" id="nav">
+                        <ul>
+                            <li>
+                                <a href="/">Home</a>
+                            </li>
+                            <li>
+                                <a href="/">Our Team</a>
+                            </li>
+                            <li>
+                                <a href="/">About</a>
+                            </li>
+                            <li>
+                                <a href="/">Contact</a>
+                            </li>
+                            <li class="nav_btn btn_in_nav"
+                                onclick="add_class_toggler(nav , 'nav_context_wrapper_active')">
+                                &times;
+                            </li>
+                        </ul>
+                    </div>
+                    <p class="nav_btn" onclick="add_class_toggler(nav , 'nav_context_wrapper_active')">
+                        Menu
+                    </p>
+                </nav>
+            </header>
+            <div style="height: 100px;"></div>
+            <div class="banner">
+                <div class="banner_context_block">
+                    <div class="banner_title">
+                        <h1>INFOSPHERE</h1>
+                    </div>
+                    <div class="banner_subtitle">
+                        <p>
+                            In this web site you will find information about our company and services
+                        </p>
+                    </div>
+                    <div class="banner_main_content">
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, minus! Animi nisi debitis quaerat doloribus magni unde, illum voluptatem esse autem consequuntur ea, aliquid odit voluptas omnis quia inventore dolorem?
+                        </p>
+                    </div>
+                    <div class="banner_btn_wrapper">
+                        <a href="/" class="banner_btn">
+                            Read More
+                        </a>
+                    </div>
                 </div>
-            </nav>
-        </header>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero optio necessitatibus asperiores architecto vel
-            sequi voluptate ipsa, beatae nostrum magnam voluptas odio in animi. Ex aut in voluptates inventore ratione?
-        </p>
-
-        <div class="box">
-            <h1>
-                lorem
-            </h1>
-            <p>Fugiat enim minus, doloribus nihil debitis iusto ut dolor facere est. Officia perferendis placeat dolorem
-                deleniti dignissimos at ea deserunt numquam et.
-            </p>
-        </div>
+            </div>
+        </section>
     </div>
     <script src="{% static 'js/app.js' %}"></script>
 </body>
