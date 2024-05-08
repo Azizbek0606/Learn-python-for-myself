@@ -28,9 +28,9 @@
 
     /* gradients */
 
-    --card_gradient:linear-gradient(80deg, rgba(27, 27, 27, 0.866), rgba(0, 0, 0, 0.411));
+    --card_gradient:linear-gradient(80deg, rgba(27, 27, 27, 0.6), rgba(0, 0, 0, 0.249));
     --bg_gradient:linear-gradient(50deg, rgb(0, 2, 3) 0%, rgb(15, 27, 27) 67%);
-    --blue_gradient:linear-gradient(80deg, rgba(2,11,24,1) 0%, rgba(0,28,41,1) 67%);
+    --blue_gradient:linear-gradient(45deg, rgb(20, 3, 46) 0%, rgb(2, 9, 44) 67%);
 
     /* shadows */
 
@@ -40,6 +40,7 @@
 
     /* font sizes */
 
+    --x-large_font_size: 2.1em;
     --large_font_size: 1.5em;
     --medium_font_size: 1.1em;
     --small_font_size: 0.9em;

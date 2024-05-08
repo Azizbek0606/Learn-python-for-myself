@@ -1,4 +1,35 @@
 @import url(./constants.css);
+@media screen and (max-width: 1000px) {
+    .banner{
+        flex-direction: column-reverse;
+        height: auto;
+        gap: var(--small-distance);
+    }
+    .banner > div{
+        width: 100%;
+    }
+    .banner_image{
+        height: 450px !important;
+    }
+    .about_us_section{
+        height: auto;
+        gap: var(--medium-distance);
+    }
+    .about_us_section > div{
+        flex-direction: column;
+        gap: var(--small-distance);
+    }
+    .about_us_section > div:last-child{
+        flex-direction: column-reverse;
+    }
+    .about_title > div , .about_main_text > div{
+        width: 100%;
+    }
+    .about_title > div img , .about_main_text .about_info_block{
+        width: 100%;
+        height: 350px !important;
+    }
+}
 @media screen and (max-width: 768px) {
     .nav_btn{
         display: block !important;
@@ -20,5 +51,9 @@
     }
     .nav_context_wrapper_active{
         transform: translate(0);
+    }
+    .cards_wrapper{
+        display: flex !important;
+        flex-direction: column !important;
     }
 }
