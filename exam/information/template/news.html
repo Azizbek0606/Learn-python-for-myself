@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/media.css' %}">
+    <title>News</title>
+</head>
+
+<body>
+    <div class="container">
+        <div style="padding: 0px 15px;">
+            <a href="/" class="btn_to_see_more" style="margin-top: 30px;">Go Back</a>
+        </div>
+        <section>
+            <div class="news_card_wrapper">
+                {% for i in news %}
+                <div class="news_card">
+                    <div class="news_card_image">
+                        <img src="{{ i.image.url }}" alt="">
+                    </div>
+                    <div class="news_card_content">
+                        <div class="news_card_content_title">
+                            <h2>
+                                {{ i.title }}
+                            </h2>
+                        </div>
+                        <div class="news_card_content_text">
+                            <p>
+                                {{ i.description }}
+                            </p>
+                        </div>
+                        <div class="news_card_content_date">
+                            <p>
+                                <span>{{ i.date }}</span>
+                            </p>
+                            <p>
+                                <span>{{ i.author }}</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+    <script src="{% static 'js/app.js' %}"></script>
+</body>
+
+</html>

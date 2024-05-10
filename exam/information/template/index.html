@@ -28,13 +28,13 @@
                                 <a href="/">Home</a>
                             </li>
                             <li>
-                                <a href="/">Our Team</a>
+                                <a href="{% url 'app:employee' %}">Our Team</a>
                             </li>
                             <li>
-                                <a href="/">About</a>
+                                <a onclick="scrollToElement(about)">About</a>
                             </li>
                             <li>
-                                <a href="/">Contact</a>
+                                <a onclick="scrollToElement(contact)">Contact</a>
                             </li>
                             <li class="nav_btn btn_in_nav"
                                 onclick="add_class_toggler(nav , 'nav_context_wrapper_active')">
@@ -63,12 +63,8 @@
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, minus! Animi nisi debitis
                             quaerat doloribus magni unde, illum voluptatem esse autem consequuntur ea, aliquid odit
                             voluptas omnis quia inventore dolorem?
-                        </p>
-                    </div>
-                    <div class="banner_btn_wrapper">
-                        <a href="/" class="banner_btn">
-                            Read More
-                        </a>
+                        </p><br>
+                        <a href="{% url 'app:news' %}" class="btn_to_see_more">What's New</a>
                     </div>
                 </div>
                 <div class="banner_image">
@@ -79,7 +75,7 @@
     </div>
     <div class="container">
         <section>
-            <div class="about_us_section">
+            <div class="about_us_section" id="about">
                 <div class="about_title">
                     <div class="about_title_image">
                         <img src="../media/header/building_for_about_section.jpg" alt="">
@@ -97,6 +93,8 @@
                             quaerat doloribus magni unde, illum voluptatem esse autem consequuntur ea, aliquid odit
                             voluptas omnis quia inventore dolorem?
                         </p>
+                        <br>
+                        <a href="{% url 'app:news' %}" class="btn_to_see_more">What's New</a>
                     </div>
                 </div>
                 <div class="about_main_text">
@@ -149,139 +147,60 @@
         </section>
         <section>
             <div class="cards_wrapper">
+                {% for i in employee %}
                 <div class="card">
                     <div class="card_title">
-                        <div class="card_image"></div>
+                        <div class="card_image">
+                            <img src="{{i.image.url}}" alt="">
+                        </div>
                         <div class="employee_name">
-                            <h3>Azizbek</h3>
-                            <p>Senior</p>
+                            <h3>{{i.name}}</h3>
+                            <p>{{ i.fields}}</p>
                         </div>
                     </div>
                     <div class="employee_full_info">
                         <p>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae commodi, iste quibusdam,
-                            sint facilis est unde
-                            temporibus magni incidunt eos suscipit exercitationem sapiente sequi, quisquam rerum
-                            similique maiores neque sunt.
-                            Asperiores incidunt consequatur optio aspernatur, provident natus repudiandae eveniet
-                            dolorem. Debitis deleniti
-                            excepturi aut ducimus voluptatem esse quod, deserunt unde est, aspernatur similique
-                            reiciendis quis minus laborum
-                            voluptate sequi qui!
-                            Necessitatibus nemo, et cum ab vitae nam ratione blanditiis. Ad repudiandae rerum, ut
-                            mollitia corrupti ipsam
-                            sapiente nisi dolore soluta tempora, hic aliquam aut delectus similique itaque neque,
-                            nihil ipsa?
+                            {{i.description}}
                         </p>
                     </div>
                 </div>
-                <div class="card">
-                    <div class="card_title">
-                        <div class="card_image"></div>
-                        <div class="employee_name">
-                            <h3>Azizbek</h3>
-                            <p>Senior</p>
+                {% endfor %}
+            </div>
+            <section>
+                <center>
+                    <a href="{% url 'app:employee' %}" class="btn_to_see_more"> See all emloyee</a>
+                </center>
+            </section>
+        </section>
+        <section>
+            <div class="contact_wrapper" id="contact">
+                <form action="{% url 'app:contact' %}" method="post">
+                    <div class="input_wrapper">
+                        <div class="small_inputs">
+                            <input type="text" name="name" placeholder="Full Name" required maxlength="150"
+                                minlength="5">
+                            <input type="email" name="email" placeholder="Email" required>
+                        </div>
+                        <div class="large_inputs">
+                            <textarea name="message" placeholder="Your Message"></textarea>
                         </div>
                     </div>
-                    <div class="employee_full_info">
-                        <p>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae commodi, iste quibusdam,
-                            sint facilis est unde
-                            temporibus magni incidunt eos suscipit exercitationem sapiente sequi, quisquam rerum
-                            similique maiores neque sunt.
-                            Asperiores incidunt consequatur optio aspernatur, provident natus repudiandae eveniet
-                            dolorem. Debitis deleniti
-                            excepturi aut ducimus voluptatem esse quod, deserunt unde est, aspernatur similique
-                            reiciendis quis minus laborum
-                            voluptate sequi qui!
-                            Necessitatibus nemo, et cum ab vitae nam ratione blanditiis. Ad repudiandae rerum, ut
-                            mollitia corrupti ipsam
-                            sapiente nisi dolore soluta tempora, hic aliquam aut delectus similique itaque neque,
-                            nihil ipsa?
-                        </p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card_title">
-                        <div class="card_image"></div>
-                        <div class="employee_name">
-                            <h3>Azizbek</h3>
-                            <p>Senior</p>
-                        </div>
-                    </div>
-                    <div class="employee_full_info">
-                        <p>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae commodi, iste quibusdam,
-                            sint facilis est unde
-                            temporibus magni incidunt eos suscipit exercitationem sapiente sequi, quisquam rerum
-                            similique maiores neque sunt.
-                            Asperiores incidunt consequatur optio aspernatur, provident natus repudiandae eveniet
-                            dolorem. Debitis deleniti
-                            excepturi aut ducimus voluptatem esse quod, deserunt unde est, aspernatur similique
-                            reiciendis quis minus laborum
-                            voluptate sequi qui!
-                            Necessitatibus nemo, et cum ab vitae nam ratione blanditiis. Ad repudiandae rerum, ut
-                            mollitia corrupti ipsam
-                            sapiente nisi dolore soluta tempora, hic aliquam aut delectus similique itaque neque,
-                            nihil ipsa?
-                        </p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card_title">
-                        <div class="card_image"></div>
-                        <div class="employee_name">
-                            <h3>Azizbek</h3>
-                            <p>Senior</p>
-                        </div>
-                    </div>
-                    <div class="employee_full_info">
-                        <p>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae commodi, iste quibusdam,
-                            sint facilis est unde
-                            temporibus magni incidunt eos suscipit exercitationem sapiente sequi, quisquam rerum
-                            similique maiores neque sunt.
-                            Asperiores incidunt consequatur optio aspernatur, provident natus repudiandae eveniet
-                            dolorem. Debitis deleniti
-                            excepturi aut ducimus voluptatem esse quod, deserunt unde est, aspernatur similique
-                            reiciendis quis minus laborum
-                            voluptate sequi qui!
-                            Necessitatibus nemo, et cum ab vitae nam ratione blanditiis. Ad repudiandae rerum, ut
-                            mollitia corrupti ipsam
-                            sapiente nisi dolore soluta tempora, hic aliquam aut delectus similique itaque neque,
-                            nihil ipsa?
-                        </p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card_title">
-                        <div class="card_image"></div>
-                        <div class="employee_name">
-                            <h3>Azizbek</h3>
-                            <p>Senior</p>
-                        </div>
-                    </div>
-                    <div class="employee_full_info">
-                        <p>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae commodi, iste quibusdam,
-                            sint facilis est unde
-                            temporibus magni incidunt eos suscipit exercitationem sapiente sequi, quisquam rerum
-                            similique maiores neque sunt.
-                            Asperiores incidunt consequatur optio aspernatur, provident natus repudiandae eveniet
-                            dolorem. Debitis deleniti
-                            excepturi aut ducimus voluptatem esse quod, deserunt unde est, aspernatur similique
-                            reiciendis quis minus laborum
-                            voluptate sequi qui!
-                            Necessitatibus nemo, et cum ab vitae nam ratione blanditiis. Ad repudiandae rerum, ut
-                            mollitia corrupti ipsam
-                            sapiente nisi dolore soluta tempora, hic aliquam aut delectus similique itaque neque,
-                            nihil ipsa?
-                        </p>
-                    </div>
-                </div>
+                    <button type="submit" class="btn_to_see_more">Submit</button>
+                    {% csrf_token %}
+                </form>
             </div>
         </section>
     </div>
+    <footer>
+        <div class="footer_title">
+            <h4>Created By PDP Students</h4>
+        </div>
+        <div class="footer_subtitle">
+            <p>
+                Created for exap
+            </p>
+        </div>
+    </footer>
     <script src="{% static 'js/app.js' %}"></script>
 </body>
 

@@ -56,4 +56,23 @@
         display: flex !important;
         flex-direction: column !important;
     }
+    .news_card{
+        flex-direction: column;
+        height: 650px;
+    }
+    .news_card > div{
+        width: 100%;
+        height: 50%;
+    }
+    .contact_wrapper{
+        height: 350px;
+    }
+    .input_wrapper{
+        grid-template-columns: repeat(1, 1fr);
+        gap: var(--xx-sall-distance);
+    }
+    .small_inputs , .large_inputs{
+        width: 100%;
+        height: 100%;
+    }
 }

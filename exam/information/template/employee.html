@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/media.css' %}">
+    <title>Employee</title>
+</head>
+
+<body>
+    <div class="container">
+        <div style="padding: 0px 15px;">
+            <a href="/" class="btn_to_see_more" style="margin-top: 30px;">Go Back</a>
+        </div>
+        <section>
+            <div class="cards_wrapper">
+                {% for i in employee %}
+                <div class="card">
+                    <div class="card_title">
+                        <div class="card_image">
+                            <img src="{{i.image.url}}" alt="">
+                        </div>
+                        <div class="employee_name">
+                            <h3>{{i.name}}</h3>
+                            <p>{{ i.fields}}</p>
+                        </div>
+                    </div>
+                    <div class="employee_full_info">
+                        <p>
+                            {{i.description}}
+                        </p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>

@@ -1,5 +1,5 @@
 window.addEventListener('scroll', function () {
-    const navbar = document.querySelector('header');
+    const navbar = document.querySelector('nav');
     if (window.scrollY > 100) {
         navbar.style.cssText = `
     background: var(--card_gradient);
@@ -16,6 +16,8 @@ function add_class_toggler(element, class_name) {
 
 let card = document.querySelectorAll('.card');
 let dot = document.querySelectorAll('.class_for_set_attribute');
+let about_box = document.querySelectorAll('.about_box');
+let news_card = document.querySelectorAll('.news_card');
 let color_list = ['#8e00f4', '#28ff33', '#7f0444', '#0A2342', '#1c5090', '#2196F3', '#6c49a4'];
 
 function set_attributes_for_color(elements) {
@@ -26,3 +28,9 @@ function set_attributes_for_color(elements) {
 }
 set_attributes_for_color(card);
 set_attributes_for_color(dot);
+set_attributes_for_color(about_box);
+set_attributes_for_color(news_card);
+
+function scrollToElement(element) {
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
