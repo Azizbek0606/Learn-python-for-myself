@@ -3,11 +3,15 @@ class Cats:
     age = 2
     color = "white"
 
-    def set_name(self):
+    def set_name(self, name):
         """example class function"""
         print("call method from cats object")
+        self.name = name
+        print(f"this is {self.name}")
+
+    def voice(self):
+        print(f"Meow {self.name}")
 
 ct = Cats()
-ct_2 = Cats()
-ct.name = "Sara"
-print(ct.name, ct.__dict__)
+ct.set_name("Sara")
+ct.voice()
