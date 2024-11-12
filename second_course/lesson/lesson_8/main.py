@@ -49,7 +49,7 @@
 
 class Counter:
     counter = 0
-    instance_values = []
+    instance_values = 0
 
     @classmethod
     def show_count(cls):
@@ -57,8 +57,8 @@ class Counter:
 
     def __call__(self, *args):
         Counter.counter += 1
-        Counter.instance_values.append(args[0])
-        print( sum(Counter.instance_values))
+        Counter.instance_values += args[0]
+        print(Counter.instance_values)
 
 
 ct = Counter()
